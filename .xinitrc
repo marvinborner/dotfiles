@@ -3,7 +3,7 @@ setxkbmap de
 bash ~/.screenlayout/dual.sh
 compton &
 wmname LG3D
-feh --bg-scale /mnt/data/Fotos/Andere/wallpaper/simple.jpg
+feh --bg-scale ~/wallpaper.jpg
 slstatus &
 slock
 while :; do
