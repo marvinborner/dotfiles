@@ -1,11 +1,12 @@
-xset r rate 200 50
-setxkbmap de
-bash ~/.screenlayout/dual.sh
-compton &
-wmname LG3D
-feh --bg-scale ~/wallpaper.jpg
-slstatus &
-slock
-while :; do
-	ssh-agent dwm
-done
+#
+# ~/.xinitrc
+#
+
+xbanish &
+dunst &
+
+xrdb -merge /home/melvin/.Xresources &
+xset r rate 300 50 &
+xsetroot -name "Melvin" &
+
+exec dwm
