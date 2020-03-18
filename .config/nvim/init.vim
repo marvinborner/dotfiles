@@ -13,7 +13,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 " Features
 Plug '907th/vim-auto-save'
-" Plug 'ycm-core/YouCompleteMe'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf.vim'
@@ -54,7 +53,7 @@ set cindent
 set cinkeys-=0#
 set cino=
 set copyindent
-set expandtab
+set noexpandtab
 set fileformats=unix,dos,mac
 set formatoptions=tcqn1
 set hidden
@@ -66,7 +65,7 @@ set infercase
 set laststatus=2
 set linebreak
 set list
-set listchars=tab:»\ ,extends:›,precedes:‹,nbsp:·,trail:·
+set listchars=tab:\ \ ,extends:›,precedes:‹,nbsp:·,trail:·
 set matchtime=2
 set nomodeline
 set nobackup
@@ -100,9 +99,9 @@ nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <Leader>a :BD<CR>
 nmap <Leader>l :bn<CR>
-" TODO: Fix the following line
 nmap <Leader>h :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
+imap jk <ESC>
 
 " Several non-retard options
 nnoremap ' `
@@ -185,6 +184,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 let NERDTreeMinimalUI=1
+let NERDTreeIgnore=['node_modules', 'cross']
 let g:NERDTreeMarkBookmarks=0
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeStatusLine=-1
