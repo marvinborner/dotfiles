@@ -77,15 +77,15 @@ set ruler
 set scroll=4
 set sessionoptions-=options
 set shiftround
-set shiftwidth=4
+set shiftwidth=8
 set shortmess+=A
 set showbreak=
 set showmatch
 set sidescrolloff=3
 set smartcase
-set softtabstop=4
+set softtabstop=8
 set suffixes+=.pyc
-set tabstop=4
+set tabstop=8
 set textwidth=100
 set wildmenu
 set wildmode=list:longest,full
@@ -98,7 +98,7 @@ nmap j gj
 nmap k gk
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
-nmap <Leader>b :BD<CR>
+nmap <Leader>a :BD<CR>
 nmap <Leader>l :bn<CR>
 " TODO: Fix the following line
 nmap <Leader>h :bp<CR>
@@ -168,6 +168,12 @@ augroup VimDiff
   autocmd!
   autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
 augroup END
+let g:ale_pattern_options = {
+\ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
+\ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
+\ '\.asm$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
+\}
+let g:ale_pattern_options_enabled = 1
 
 " File explorer
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>

@@ -18,6 +18,7 @@ alias gs='git status'
 alias gc='git commit -a'
 alias ga='git add'
 alias gp='git push'
+alias gd='git diff'
 
 PS1='[\u@\h \W]\$ '
 export EDITOR='nvim'
