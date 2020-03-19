@@ -24,6 +24,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
+Plug 'majutsushi/tagbar'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -101,15 +102,24 @@ nmap <Leader>a :BD<CR>
 nmap <Leader>l :bn<CR>
 nmap <Leader>h :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
-imap jk <ESC>
+" imap jk <ESC>
 
 " Several non-retard options
 nnoremap ' `
 autocmd VimResized * :wincmd =
 
 " Autosave
-let g:auto_save=1
+let g:auto_save=0
 let g:auto_save_silent=1
+augroup ft_c
+  au!
+  au FileType c let b:auto_save=1
+  au FileType cpp let b:auto_save=1
+augroup END
+
+" Tagbar
+nmap <Leader>T :TagbarToggle<CR>
+let g:tagbar_compact=1
 
 " Splitting
 set splitbelow splitright
