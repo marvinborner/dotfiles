@@ -27,6 +27,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-fireplace'
 Plug 'kien/rainbow_parentheses.vim'
+Plug 'venantius/vim-cljfmt'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 " Plug 'ananagame/vimsence'
@@ -117,15 +118,6 @@ autocmd VimResized * :wincmd =
 let g:auto_save=0
 let g:auto_save_silent=1
 
-" Custom actions for different filetypes
-augroup ft_files
-  au!
-  au FileType c let b:auto_save=1
-  au FileType cpp let b:auto_save=1
-  au FileType clojure let b:auto_save=1
-  au FileType clojure RainbowParenthesesToggle
-augroup END
-
 " Tagbar
 nmap <Leader>T :TagbarToggle<CR>
 let g:tagbar_compact=1
@@ -190,9 +182,22 @@ let g:ale_pattern_options = {
 \ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.asm$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
-\ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': ['joker']},
+\ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': []},
 \}
 let g:ale_pattern_options_enabled = 1
+
+" Something about clojure
+let g:clj_fmt_autosave=0
+
+" Custom actions for different filetypes
+augroup ft_files
+  au!
+  au FileType c let b:auto_save=1
+  au FileType cpp let b:auto_save=1
+  au FileType clojure let b:auto_save=1
+  au FileType clojure nmap <Leader>F :Cljfmt<CR>
+  au FileType clojure RainbowParenthesesToggle
+augroup END
 
 " File explorer
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
