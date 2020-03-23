@@ -1,0 +1,15 @@
+#!/usr/bin/env sh
+
+exec qutebrowser &
+exec st -e nvim /home/melvin/code/melvix/ &
+
+exec telegram-desktop &
+exec signal-desktop &
+exec discord &
+exec whatsapp-nativefier-dark &
+
+exec spotify &
+
+sleep 0.5
+
+dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play &

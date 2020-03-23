@@ -25,6 +25,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'

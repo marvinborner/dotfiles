@@ -23,3 +23,4 @@ alias gd='git diff'
 PS1='[\u@\h \W]\$ '
 export EDITOR='nvim'
 export TERM='st'
+export PATH=$PATH:$HOME/.scripts
