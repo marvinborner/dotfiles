@@ -23,9 +23,13 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-fireplace'
+Plug 'kien/rainbow_parentheses.vim'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
-Plug 'ananagame/vimsence'
+" Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -112,10 +116,14 @@ autocmd VimResized * :wincmd =
 " Autosave
 let g:auto_save=0
 let g:auto_save_silent=1
-augroup ft_c
+
+" Custom actions for different filetypes
+augroup ft_files
   au!
   au FileType c let b:auto_save=1
   au FileType cpp let b:auto_save=1
+  au FileType clojure let b:auto_save=1
+  au FileType clojure RainbowParenthesesToggle
 augroup END
 
 " Tagbar
@@ -182,6 +190,7 @@ let g:ale_pattern_options = {
 \ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.asm$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
+\ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': ['joker']},
 \}
 let g:ale_pattern_options_enabled = 1
 
