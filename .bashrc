@@ -8,6 +8,8 @@
 set -o vi
 bind -m vi-insert "\C-l":clear-screen
 
+source /usr/share/bash-completion/bash_completion
+
 alias ls='ls --color=auto'
 alias la='ls -la'
 alias vim='nvim'
@@ -20,7 +22,8 @@ alias ga='git add'
 alias gp='git push'
 alias gd='git diff'
 
-PS1='[\u@\h \W]\$ '
+export PS1='[\W] '
+export HISTCONTROL=ignoredups
 export EDITOR='nvim'
 export TERM='st'
 export PATH=$PATH:$HOME/.scripts
