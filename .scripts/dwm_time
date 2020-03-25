@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+while true; do
+	time=$( date +'%H:%M')
+	xsetroot -name "$time"
+	sleep 1
+done
