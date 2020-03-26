@@ -26,4 +26,5 @@ export PS1='[\W] '
 export HISTCONTROL=ignoredups
 export EDITOR='nvim'
 export TERM='st'
+export TERMINAL='st'
 export PATH=$PATH:$HOME/.scripts
