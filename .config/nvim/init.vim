@@ -184,8 +184,9 @@ augroup END
 let g:ale_pattern_options = {
 \ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
-\ '\.asm$': {'ale_linters': [], 'ale_fixers': ['trim_whitespace']},
+\ '\.asm$': {'ale_linters': ['gcc'], 'ale_fixers': ['trim_whitespace']},
 \ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': []},
+\ '\.sh$': {'ale_linters': ['shellcheck'], 'ale_fixers': ['shfmt']},
 \}
 let g:ale_pattern_options_enabled = 1
 
@@ -199,7 +200,9 @@ augroup ft_files
   au FileType cpp let b:auto_save=1
   au FileType clojure let b:auto_save=1
   au FileType clojure nmap <Leader>F :Cljfmt<CR>
-  au FileType clojure RainbowParenthesesToggle
+  au FileType clojure RainbowParenthesesLoadRound
+  au FileType clojure RainbowParenthesesActivate
+  au FileType asm set ft=nasm
 augroup END
 
 " File explorer
