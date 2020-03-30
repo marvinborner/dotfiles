@@ -1,0 +1,21 @@
+#!/usr/bin/env sh
+
+# Scripts
+cp -r "$HOME"/.scripts/ .
+
+# Configs
+cp "$HOME"/.config/dunst/dunstrc .config/dunst/
+cp "$HOME"/.config/gtk-2.0/* .config/gtk-2.0/
+cp "$HOME"/.config/gtk-3.0/* .config/gtk-3.0/
+cp "$HOME"/.config/nvim/init.vim .config/nvim/
+cp "$HOME"/.config/zathura/zathurarc .config/zathura/
+
+# Repos
+cp -r "$HOME"/.repos/* .repos/
+find .repos/ -type d -name ".git" -exec rm -rf {} +
+
+# Inits
+cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
+cp -r "$HOME"/.lein .
+
+git status

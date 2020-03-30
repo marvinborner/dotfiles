@@ -12,10 +12,7 @@ exec signal-desktop &
 exec discord &
 exec whatsapp-nativefier-dark &
 
-exec spotify &
-
-sleep 1
-
+exec spotify
 dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
 
 notify-send -u critical "Welcome back, Melvin!"
