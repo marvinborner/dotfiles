@@ -101,6 +101,7 @@ set wildmode=list:longest,full
 set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
 set encoding=utf-8
 set number relativenumber
+set noro
 
 " Basic keymaps
 nmap j gj

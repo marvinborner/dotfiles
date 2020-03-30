@@ -24,6 +24,7 @@ alias gd='git diff'
 
 export PS1='[\W] '
 export HISTCONTROL=ignoredups
+export BROWSER='qutebrowser'
 export EDITOR='nvim'
 export TERM='st'
 export TERMINAL='st'
