@@ -28,3 +28,4 @@ export EDITOR='nvim'
 export TERM='st'
 export TERMINAL='st'
 export PATH=$PATH:$HOME/.scripts
+export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
