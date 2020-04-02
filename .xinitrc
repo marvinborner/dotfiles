@@ -9,7 +9,7 @@ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl
 xrdb -merge /home/melvin/.Xresources &
 xset r rate 300 50 &
 wmname LG3D &
-code &
+environment &
 dwm_time &
 
 exec dwm
