@@ -33,6 +33,7 @@ Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
+Plug 'peterhoeg/vim-qml'
 " Plug 'ananagame/vimsence'
 
 " Menus
@@ -95,7 +96,6 @@ set smartcase
 set softtabstop=8
 set suffixes+=.pyc
 set tabstop=8
-set textwidth=100
 set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
