@@ -1,4 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
+
+rm -rf .config/ .repos/ .scripts/
+mkdir -p .config/{dunst,gtk-2.0,gtk-3.0,nvim,zathura,mpv} .repos
 
 # Scripts
 cp -r "$HOME"/.scripts/ .
