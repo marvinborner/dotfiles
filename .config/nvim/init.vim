@@ -113,7 +113,10 @@ nmap <Leader>a :BD<CR>
 nmap <Leader>l :bn<CR>
 nmap <Leader>h :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
-" imap jk <ESC>
+
+" Fix dumb delete combo
+nnoremap d "_d
+vnoremap d "_d
 
 " Several non-retard options
 nnoremap ' `
