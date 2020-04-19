@@ -100,6 +100,7 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
 set encoding=utf-8
+set updatetime=100
 set number relativenumber
 set noro
 
@@ -231,6 +232,9 @@ let g:airline_powerline_fonts=1
 
 " Colorscheme
 colorscheme codedark " or molokai
+highlight GitGutterAdd guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " Better vim diff
 if &diff
