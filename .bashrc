@@ -17,7 +17,7 @@ alias v='nvim'
 alias calc='bc -lq'
 
 alias gs='git status'
-alias gc='git commit -a'
+alias gc='git commit'
 alias ga='git add'
 alias gp='git push'
 alias gd='git diff'
