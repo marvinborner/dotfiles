@@ -34,6 +34,7 @@ Plug 'venantius/vim-cljfmt'
 Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
+Plug 'dermusikman/sonicpi.vim'
 " Plug 'ananagame/vimsence'
 
 " Menus
