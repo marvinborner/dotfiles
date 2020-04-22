@@ -28,5 +28,5 @@ export BROWSER='qutebrowser'
 export EDITOR='nvim'
 export TERM='st'
 export TERMINAL='st'
-export PATH=$PATH:$HOME/.scripts:$HOME/.sailfish/bin
+export PATH=$PATH:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
