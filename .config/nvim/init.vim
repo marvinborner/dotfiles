@@ -35,7 +35,7 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
-" Plug 'ananagame/vimsence'
+Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -110,9 +110,9 @@ nmap j gj
 nmap k gk
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
-nmap <Leader>a :BD<CR>
-nmap <Leader>l :bn<CR>
-nmap <Leader>h :bp<CR>
+nmap <C-a> :BD<CR>
+nmap <C-l> :bn<CR>
+nmap <C-h> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
 
 " Fix dumb delete combo
@@ -133,14 +133,14 @@ let g:tagbar_compact=1
 
 " Splitting
 set splitbelow splitright
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
+nmap <Leader>h <C-w>h
+nmap <Leader>j <C-w>j
+nmap <Leader>k <C-w>k
+nmap <Leader>l <C-w>l
 
 " FZF
-nmap ; :Buffers<CR>
-nmap <Leader>t :Files<CR>
+nmap ; :Files<CR>
+nmap <Leader>t :Buffers<CR>
 nmap <Leader>c :Colors<CR>
 nmap <Leader>s :Rg!<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
@@ -233,6 +233,12 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 let g:airline_theme='minimalist'
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
+
+" Sonic Pi
+let g:sonicpi_command = 'sonic-pi-tool'
+let g:sonicpi_send = 'eval-stdin'
+let g:sonicpi_stop = 'stop'
+let g:vim_redraw = 1
 
 " Colorscheme
 colorscheme codedark " or molokai
