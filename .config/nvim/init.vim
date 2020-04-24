@@ -111,8 +111,8 @@ nmap k gk
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
 nmap <C-a> :BD<CR>
-nmap <C-l> :bn<CR>
-nmap <C-h> :bp<CR>
+nmap <C-j> :bn<CR>
+nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
 
 " Fix dumb delete combo
