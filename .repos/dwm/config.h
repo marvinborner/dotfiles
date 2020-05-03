@@ -18,6 +18,10 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+/* scratchpads */
+static const char scratchpadname[] = "spterm";
+static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -35,6 +39,7 @@ static const Rule rules[] = {
 	{ "Thunderbird",	  NULL,       NULL,       1 << 6,       0,           -1 },
 	{ NULL,			  NULL,       "WhatsApp", 1 << 7,       0,           -1 },
 	{ NULL,			  NULL,       "DISPATCH", 1 << 2,       0,           -1 },
+	{ NULL,			  "spterm",   NULL,       1 << 10,	1,	     -1 },
 };
 
 /* layout(s) */
@@ -75,8 +80,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,        	XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,        	XK_s,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,        	XK_l,      spawn,          {.v = lockcmd } },
+	{ MODKEY|ShiftMask,        	XK_space,  togglescratch,  {.v = scratchpadcmd } },
 
-	{ MODKEY|ShiftMask,      	XK_Return, zoom,           {.v = termcmd } },
+	{ MODKEY|ShiftMask,      	XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -93,7 +99,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
-	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },

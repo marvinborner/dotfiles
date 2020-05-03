@@ -11,7 +11,7 @@ bind -m vi-insert "\C-l":clear-screen
 source /usr/share/bash-completion/bash_completion
 
 alias ls='ls --color=auto'
-alias la='ls -la'
+alias la='ls -lah'
 alias vim='nvim'
 alias v='nvim'
 alias calc='bc -lq'

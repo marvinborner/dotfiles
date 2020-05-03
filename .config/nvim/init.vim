@@ -35,7 +35,7 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
-Plug 'ananagame/vimsence'
+" Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -86,7 +86,8 @@ set visualbell t_vb=
 set nowritebackup
 set ruler
 set scroll=4
-set sessionoptions-=options
+set viewoptions=folds,cursor
+set sessionoptions=folds
 set shiftround
 set shiftwidth=8
 set shortmess+=A
@@ -110,7 +111,7 @@ nmap j gj
 nmap k gk
 nmap <Leader>w :w<CR>
 nmap <Leader>q :q<CR>
-nmap <C-a> :BD<CR>
+nmap <C-q> :BD<CR>
 nmap <C-j> :bn<CR>
 nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
@@ -126,6 +127,8 @@ autocmd VimResized * :wincmd =
 " Autosave
 let g:auto_save=0
 let g:auto_save_silent=1
+autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
+autocmd BufWinEnter ?* silent! loadview
 
 " Tagbar
 nmap <Leader>T :TagbarToggle<CR>
@@ -138,9 +141,14 @@ nmap <Leader>j <C-w>j
 nmap <Leader>k <C-w>k
 nmap <Leader>l <C-w>l
 
+" Terminal
+nmap <Leader>t :term<CR>
+tnoremap <ESC> <C-\><C-n>:bd!<CR>
+autocmd TermOpen * startinsert
+
 " FZF
 nmap ; :Files<CR>
-nmap <Leader>t :Buffers<CR>
+nmap <Leader>B :Buffers<CR>
 nmap <Leader>c :Colors<CR>
 nmap <Leader>s :Rg!<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
