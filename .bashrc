@@ -19,7 +19,7 @@ alias calc='bc -lq'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
-alias gp='git push'
+alias gp='git push --quiet &'
 alias gd='git diff'
 
 export PS1='[\W] '
