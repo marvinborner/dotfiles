@@ -35,7 +35,7 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
-" Plug 'ananagame/vimsence'
+Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -116,6 +116,10 @@ nmap <C-j> :bn<CR>
 nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
 
+" Run - very specific to my project layouts
+" nmap <Leader>r :!./run<CR>
+nmap <Leader>r :terminal<CR>./run<CR>
+
 " Fix dumb delete combo
 nnoremap d "_d
 vnoremap d "_d
@@ -144,6 +148,7 @@ nmap <Leader>l <C-w>l
 " Terminal
 nmap <Leader>t :term<CR>
 tnoremap <ESC> <C-\><C-n>:bd!<CR>
+tnoremap <Leader><ESC> <C-\><C-n>
 autocmd TermOpen * startinsert
 
 " FZF
