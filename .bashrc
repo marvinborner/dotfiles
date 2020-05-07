@@ -15,11 +15,12 @@ alias la='ls -lah'
 alias vim='nvim'
 alias v='nvim'
 alias calc='bc -lq'
+alias zat='zathura'
 
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
-alias gp='git push --quiet &'
+alias gp='nohup git push --quiet &> /dev/null &'
 alias gd='git diff'
 
 export PS1='[\W] '
@@ -30,3 +31,4 @@ export TERM='st'
 export TERMINAL='st'
 export PATH=$PATH:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
+export FZF_DEFAULT_COMMAND='rg --line-number --color never --no-heading ""'

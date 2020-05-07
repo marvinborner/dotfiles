@@ -263,3 +263,22 @@ highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 if &diff
     highlight! link DiffText MatchParen
 endif
+
+" Read strange files
+autocmd BufReadPre *.doc silent set ro
+autocmd BufReadPost *.doc silent %!antiword "%"
+
+autocmd BufReadPre *.odt,*.odp silent set ro
+autocmd BufReadPost *.odt,*.odp silent %!odt2txt "%"
+
+autocmd BufReadPre *.pdf silent set ro
+autocmd BufReadPost *.pdf silent %!pdftotext -nopgbrk -layout -q -eol unix "%" - | fmt -w78
+
+autocmd BufReadPre *.rtf silent set ro
+autocmd BufReadPost *.rtf silent %!unrtf --text
+
+autocmd BufReadPre *.jpg,*.jpeg silent set ro
+autocmd BufReadPost *.jpg,*.jpeg silent %!jp2a --width=78 "%"
+
+autocmd BufReadPre *.png,*.gif,*.bmp silent set ro
+autocmd BufReadPost *.png,*.gif,*.bmp silent %!convert "%" jpg:- | jp2a --width=78 -
