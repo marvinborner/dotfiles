@@ -27,6 +27,7 @@ Plug 'tpope/vim-salve'
 Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fireplace'
+Plug 'tpope/vim-fugitive'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 Plug 'kien/rainbow_parentheses.vim'
@@ -35,7 +36,7 @@ Plug 'w0rp/ale'
 Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
-Plug 'ananagame/vimsence'
+"Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
@@ -154,7 +155,8 @@ autocmd TermOpen * startinsert
 " FZF
 nmap ; :Files<CR>
 nmap <Leader>B :Buffers<CR>
-nmap <Leader>c :Colors<CR>
+nmap <Leader>C :Colors<CR>
+nmap <Leader>c :Commits<CR>
 nmap <Leader>s :Rg!<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
 command! -bang -nargs=* Rg
@@ -163,6 +165,7 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:40%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
 
 " Git implementation
 let g:gitgutter_enabled=1
@@ -238,6 +241,8 @@ let NERDTreeIgnore=['node_modules', 'cross']
 let g:NERDTreeMarkBookmarks=0
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeStatusLine=-1
+au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1 | b# | exe "normal! \<c-w>\<c-w>" | :blast | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Root master super save
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
@@ -258,6 +263,13 @@ colorscheme codedark " or molokai
 highlight GitGutterAdd guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" TODOs
+command Td :Rg! TODO
+command TD :Rg! TODO
+command Todo :Rg! TODO
+command ToDo :Rg! TODO
+command TODO :Rg! TODO
 
 " Better vim diff
 if &diff
