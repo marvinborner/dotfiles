@@ -117,10 +117,6 @@ nmap <C-j> :bn<CR>
 nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
 
-" Run - very specific to my project layouts
-" nmap <Leader>r :!./run<CR>
-nmap <Leader>r :terminal<CR>./run<CR>
-
 " Fix dumb delete combo
 nnoremap d "_d
 vnoremap d "_d
@@ -148,8 +144,9 @@ nmap <Leader>l <C-w>l
 
 " Terminal
 nmap <Leader>t :term<CR>
-tnoremap <ESC> <C-\><C-n>:bd!<CR>
+tnoremap <C-q> <C-\><C-n>:BD!<CR>
 tnoremap <Leader><ESC> <C-\><C-n>
+nmap <Leader>r :terminal<CR>./run<CR>
 autocmd TermOpen * startinsert
 
 " FZF
@@ -230,7 +227,6 @@ augroup END
 " File explorer
 nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>f :NERDTreeFind<CR>
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
