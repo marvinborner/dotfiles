@@ -106,6 +106,9 @@ set encoding=utf-8
 set updatetime=100
 set number relativenumber
 set noro
+set notimeout
+set ttimeout
+set timeoutlen=100
 
 " Basic keymaps
 nmap j gj
