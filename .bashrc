@@ -20,6 +20,8 @@ alias vim='nvim'
 alias v='nvim'
 alias calc='bc -lq'
 alias zat='zathura'
+alias clip='xclip -selection c'
+alias py='python3'
 
 # Git aliases
 alias gs='git status'
@@ -37,5 +39,6 @@ export TERM='st'
 export TERMINAL='st'
 export PATH=$PATH:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
+export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.txt"
 export FZF_DEFAULT_COMMAND='rg --line-number --color never --no-heading ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-d:half-page-down,ctrl-u:half-page-up'

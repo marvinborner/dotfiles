@@ -209,8 +209,14 @@ let g:ale_pattern_options = {
 \ '\.asm$': {'ale_linters': ['gcc'], 'ale_fixers': ['trim_whitespace']},
 \ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': []},
 \ '\.sh$': {'ale_linters': ['shellcheck'], 'ale_fixers': ['shfmt']},
+\ '\.cs$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
+\ '\.java$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
+\ '\.d$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
 \}
 let g:ale_pattern_options_enabled = 1
+autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'
+autocmd FileType java let g:ale_c_uncrustify_options = '-l JAVA'
+autocmd FileType d let g:ale_c_uncrustify_options = '-l D'
 
 " Something about clojure
 let g:clj_fmt_autosave=0
@@ -219,6 +225,7 @@ let g:clj_fmt_autosave=0
 augroup ft_files
   au!
   au FileType c let b:auto_save=1
+  au FileType cs let b:auto_save=1
   au FileType cpp let b:auto_save=1
   au FileType clojure let b:auto_save=1
   au FileType clojure nmap <Leader>F :Cljfmt<CR>
