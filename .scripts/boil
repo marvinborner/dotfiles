@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+mode="$1"
+name="$2"
+boilerplates="$HOME/.boilerplates"
+
+if [ "${mode}" = "" ] || [ "${name}" = "" ]; then
+	echo "Not enough parameters"
+	exit 1
+fi
+
+if [ "${mode}" = "clj" ]; then
+	lein new app "$name"
+	cp "$boilerplates/$mode/run" "$name"
+	rm -rf "$name/CHANGELOG.md" "$name/LICENSE" "$name/README.md" "$name/doc/"
+else
+	cp -r "$boilerplates/$mode" "$name" || echo "Something went wrong"
+fi

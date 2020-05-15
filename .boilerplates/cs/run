@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+csc Program.cs
+mono Program.exe

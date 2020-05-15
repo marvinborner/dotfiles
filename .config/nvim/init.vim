@@ -149,7 +149,8 @@ nmap <Leader>l <C-w>l
 nmap <Leader>t :term<CR>
 tnoremap <C-q> <C-\><C-n>:BD!<CR>
 tnoremap <Leader><ESC> <C-\><C-n>
-nmap <Leader>r :terminal<CR>./run<CR>
+nmap <Leader>r :!./run<CR>
+nmap <Leader>R :terminal<CR>./run<CR>
 autocmd TermOpen * startinsert
 
 " FZF
