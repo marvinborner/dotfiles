@@ -206,6 +206,7 @@ augroup VimDiff
 augroup END
 let g:ale_pattern_options = {
 \ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
+\ '\.cpp$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
 \ '\.asm$': {'ale_linters': ['gcc'], 'ale_fixers': ['trim_whitespace']},
 \ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': []},

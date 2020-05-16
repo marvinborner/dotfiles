@@ -29,6 +29,7 @@ alias gc='git commit'
 alias ga='git add'
 alias gp='nohup git push --quiet &> /dev/null &'
 alias gd='git diff'
+alias gr='git reset'
 
 # Settings
 export PS1='[\W] '

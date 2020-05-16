@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+
+g++ file.cpp || exit 1
+./a.out < test.txt
+
+xclip -selection c < file.cpp
