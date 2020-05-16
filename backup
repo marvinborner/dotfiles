@@ -26,4 +26,7 @@ find .repos/ -type d -name ".git" -exec rm -rf {} +
 cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
 cp -r "$HOME"/.lein .
 
+# Installed programs
+pacman -Qet | awk '{print $1}' > packages.txt
+
 git status
