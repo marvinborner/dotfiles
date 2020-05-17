@@ -24,6 +24,7 @@ alias clip='xclip -selection c'
 alias py='python3'
 
 # Git aliases
+alias gi='git init'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'

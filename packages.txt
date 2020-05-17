@@ -104,7 +104,6 @@ rust
 scrcpy
 screen
 scrot
-seamonkey
 shellcheck
 shfmt
 signal-desktop
