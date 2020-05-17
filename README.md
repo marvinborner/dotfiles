@@ -3,4 +3,5 @@ These are my personal dotfiles of my main arch-based machine. You probably shoul
 
 ## My routine for new machines
 * Clone this repository and move all its files into your `$HOME` (including `.git`)
-* Install the packages: `for x in $(cat packages.txt); do pacman -S $x; done`
+* Install the packages: `for x in $(cat packages.txt); do yay -S $x; done`
+* `git pull` in `$HOME` to update
