@@ -179,6 +179,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+yapf
 yay
 zip
 zoom
