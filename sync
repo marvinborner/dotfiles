@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# The most awesome sync script! :)
+
+git pull || exit 1
+comm -23 <(sort packages.txt) <(pacman -Qqe | sort) | yay -S --needed -
+for d in ./.repos/*/ ; do (cd "$d" && sudo make install); done || exit 1

@@ -27,6 +27,6 @@ cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
 cp -r "$HOME"/.lein .
 
 # Installed programs
-pacman -Qet | awk '{print $1}' > packages.txt
+pacman -Qqe > packages.txt
 
 git status
