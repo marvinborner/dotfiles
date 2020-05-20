@@ -20,7 +20,6 @@ audacity
 base
 bdf-spleen
 bdf2c
-bind-tools
 bison
 ccache
 cdrtools
@@ -53,6 +52,7 @@ hdparm
 htop
 hub
 intel2gas
+inxi
 jdownloader2
 jitsi-meet-desktop-bin
 joker-bin
@@ -80,7 +80,6 @@ nasm
 neovim
 nerd-fonts-hack
 nerd-fonts-source-code-pro
-net-tools
 nmap
 ntp
 nyancat
@@ -110,6 +109,7 @@ signal-desktop
 sonic-pi
 speedtest-cli
 spotifywm-git
+stress
 sxiv
 telegram-desktop
 the_silver_searcher
@@ -118,7 +118,6 @@ thunderbird-i18n-de
 thunderbird-i18n-en-us
 tmate
 transmission-gtk
-tree
 ttf-inconsolata
 ttf-iosevka-term
 ttf-joypixels
@@ -129,14 +128,12 @@ uncrustify
 unicode-emoji
 unrar
 unrtf
-usbutils
 v4l2loopback-dkms
 vi
 virtualbox-guest-utils
 vitetris
 whatsapp-nativefier-dark
 windows2usb-git
-wmctrl
 wmname
 wtf
 xbanish
@@ -159,7 +156,6 @@ xorg-x11perf
 xorg-xbacklight
 xorg-xcmsdb
 xorg-xcursorgen
-xorg-xdpyinfo
 xorg-xdriinfo
 xorg-xev
 xorg-xgamma
