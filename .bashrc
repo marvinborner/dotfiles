@@ -41,6 +41,6 @@ export TERM='st'
 export TERMINAL='st'
 export PATH=$PATH:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
-export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.txt"
+export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.cfg"
 export FZF_DEFAULT_COMMAND='rg --line-number --color never --no-heading ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-d:half-page-down,ctrl-u:half-page-up'

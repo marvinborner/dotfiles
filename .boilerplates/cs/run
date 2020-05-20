@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-csc Program.cs
+mcs -out:Program.exe -pkg:dotnet ./*.cs
 mono Program.exe

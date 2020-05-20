@@ -13,7 +13,7 @@ cp "$HOME"/.config/gtk-3.0/* .config/gtk-3.0/
 cp "$HOME"/.config/nvim/init.vim .config/nvim/
 cp "$HOME"/.config/zathura/zathurarc .config/zathura/
 cp "$HOME"/.config/mpv/mpv.conf .config/mpv/
-cp "$HOME"/.config/uncrustify.txt .config/
+cp "$HOME"/.config/uncrustify.cfg .config/
 
 # Boilerplates
 cp -r "$HOME"/.boilerplates .
