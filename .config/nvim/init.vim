@@ -15,7 +15,6 @@ call plug#begin('~/.config/nvim/plugged')
 Plug '907th/vim-auto-save'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/incsearch.vim'
 Plug 'qpkorr/vim-bufkill'
@@ -30,22 +29,24 @@ Plug 'tpope/vim-fireplace'
 Plug 'tpope/vim-fugitive'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
-Plug 'kien/rainbow_parentheses.vim'
 Plug 'venantius/vim-cljfmt'
 Plug 'w0rp/ale'
-Plug 'majutsushi/tagbar'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
+Plug 'sheerun/vim-polyglot'
 "Plug 'ananagame/vimsence'
 
 " Menus
 Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
+Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf.vim'
 
 " Appearance
-Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kien/rainbow_parentheses.vim'
 
 call plug#end()
 
@@ -53,22 +54,20 @@ call plug#end()
 nnoremap c "_c
 filetype plugin indent on
 syntax on
-set bg=dark
-set go=a
-set ff=unix
-set mouse=a
-set nocompatible
 set autoindent
 set autoread
 set autowrite
 set backspace=indent,eol,start
+set bg=dark
 set cindent
 set cinkeys-=0#
 set cino=
 set copyindent
-set noexpandtab
+set encoding=utf-8
+set ff=unix
 set fileformats=unix,dos,mac
 set formatoptions=tcqn1
+set go=a
 set hidden
 set history=200
 set hlsearch
@@ -80,35 +79,39 @@ set linebreak
 set list
 set listchars=tab:\ \ ,extends:›,precedes:‹,nbsp:·,trail:·
 set matchtime=2
-set nomodeline
+set mouse=a
 set nobackup
+set nocompatible
+set noexpandtab
+set nomodeline
 set nonumber
-set visualbell t_vb=
+set noro
+set noshowmode
+set notimeout
 set nowritebackup
+set number relativenumber
 set ruler
 set scroll=4
-set viewoptions=folds,cursor
 set sessionoptions=folds
 set shiftround
 set shiftwidth=8
 set shortmess+=A
 set showbreak=
 set showmatch
+set showtabline=2
 set sidescrolloff=3
 set smartcase
 set softtabstop=8
 set suffixes+=.pyc
 set tabstop=8
+set timeoutlen=100
+set ttimeout
+set updatetime=100
+set viewoptions=folds,cursor
+set visualbell t_vb=
+set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
 set wildmenu
 set wildmode=list:longest,full
-set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
-set encoding=utf-8
-set updatetime=100
-set number relativenumber
-set noro
-set notimeout
-set ttimeout
-set timeoutlen=100
 
 " Basic keymaps
 nmap j gj
@@ -161,11 +164,11 @@ nmap <Leader>c :Commits<CR>
 nmap <Leader>s :Rg!<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case -g "!{*.lock,*-lock.json}" '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:40%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+	\ call fzf#vim#grep(
+	\	'rg --column --line-number --no-heading --color=always --smart-case -g "!{*.lock,*-lock.json}" '.shellescape(<q-args>), 1,
+	\	<bang>0 ? fzf#vim#with_preview('up:40%')
+	\		: fzf#vim#with_preview('right:50%:hidden', '?'),
+	\	<bang>0)
 
 
 " Git implementation
@@ -182,13 +185,13 @@ nmap ghp <Plug>(GitGutterPreviewHunk)
 nmap ]g :GitGutterNextHunk<CR>
 nmap [g :GitGutterPrevHunk<CR>
 augroup VimDiff
-  autocmd!
-  autocmd VimEnter,FilterWritePre * if &diff | GitGutterDisable | endif
+	autocmd!
+	autocmd VimEnter,FilterWritePre * if &diff | GitGutterDisable | endif
 augroup END
 
 " Better search highlighting TODO: Fix neovim specific double caret
-nmap /  <Plug>(incsearch-forward)
-nmap ?  <Plug>(incsearch-backward)
+nmap /	<Plug>(incsearch-forward)
+nmap ?	<Plug>(incsearch-backward)
 nmap g/ <Plug>(incsearch-stay)
 
 " ALE
@@ -201,8 +204,8 @@ nmap ]w :ALENextWrap<CR>
 nmap [w :ALEPreviousWrap<CR>
 nmap <Leader>f <Plug>(ale_fix)
 augroup VimDiff
-  autocmd!
-  autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
+	autocmd!
+	autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
 augroup END
 let g:ale_pattern_options = {
 \ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
@@ -225,15 +228,15 @@ let g:clj_fmt_autosave=0
 
 " Custom actions for different filetypes
 augroup ft_files
-  au!
-  au FileType c let b:auto_save=1
-  au FileType cs let b:auto_save=1
-  au FileType cpp let b:auto_save=1
-  au FileType clojure let b:auto_save=1
-  au FileType clojure nmap <Leader>F :Cljfmt<CR>
-  au FileType clojure RainbowParenthesesLoadRound
-  au FileType clojure RainbowParenthesesActivate
-  au FileType asm set ft=nasm
+	au!
+	au FileType c let b:auto_save=1
+	au FileType cs let b:auto_save=1
+	au FileType cpp let b:auto_save=1
+	au FileType clojure let b:auto_save=1
+	au FileType clojure nmap <Leader>F :Cljfmt<CR>
+	au FileType clojure RainbowParenthesesLoadRound
+	au FileType clojure RainbowParenthesesActivate
+	au FileType asm set ft=nasm
 augroup END
 
 " File explorer
@@ -256,9 +259,14 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Airline config
-let g:airline_theme='minimalist'
-let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
+let g:airline_theme = 'minimalist'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_powerline_fonts = 1
+let g:airline_section_b = ''
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = '%3p%% (%l/%L)'
 
 " Sonic Pi
 let g:sonicpi_command = 'sonic-pi-tool'
@@ -281,7 +289,7 @@ command TODO :Rg! TODO
 
 " Better vim diff
 if &diff
-    highlight! link DiffText MatchParen
+	highlight! link DiffText MatchParen
 endif
 
 " Read strange files
