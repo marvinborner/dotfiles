@@ -44,7 +44,8 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf.vim'
 
 " Appearance
-Plug 'flazz/vim-colorschemes'
+"Plug 'flazz/vim-colorschemes'
+Plug 'tomasiser/vim-code-dark'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -103,6 +104,7 @@ set sidescrolloff=3
 set smartcase
 set softtabstop=8
 set suffixes+=.pyc
+set t_Co=256
 set tabstop=8
 set timeoutlen=100
 set ttimeout
@@ -190,8 +192,8 @@ augroup VimDiff
 augroup END
 
 " Better search highlighting TODO: Fix neovim specific double caret
-nmap /	<Plug>(incsearch-forward)
-nmap ?	<Plug>(incsearch-backward)
+nmap / <Plug>(incsearch-forward)
+nmap ? <Plug>(incsearch-backward)
 nmap g/ <Plug>(incsearch-stay)
 
 " ALE
@@ -260,6 +262,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Airline config
 let g:airline_theme = 'minimalist'
+let g:airline_extensions = ['tabline', 'tagbar', 'ale', 'term']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
