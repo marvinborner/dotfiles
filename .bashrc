@@ -45,3 +45,6 @@ export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
 export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.cfg"
 export FZF_DEFAULT_COMMAND='rg --line-number --color never --no-heading ""'
 export FZF_DEFAULT_OPTS='--bind ctrl-d:half-page-down,ctrl-u:half-page-up'
+
+# Superuser customization
+[ "$(id -u)" == "0" ] && export PS1="\[\e[01;31m\]$PS1\[\e[00m\]"
