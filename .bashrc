@@ -16,12 +16,15 @@ export HISTFILESIZE=100000
 # Aliases
 alias ls='ls --color=auto'
 alias la='ls -lah'
+alias ll='ls -1'
+alias cls='clear; ls'
 alias vim='nvim'
 alias v='nvim'
 alias calc='bc -lq'
 alias zat='zathura'
 alias clip='xclip -selection c'
 alias py='python3'
+alias sudo='sudo '
 alias please='sudo $(fc -ln -1)'
 
 # Git aliases
