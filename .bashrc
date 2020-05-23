@@ -22,6 +22,7 @@ alias calc='bc -lq'
 alias zat='zathura'
 alias clip='xclip -selection c'
 alias py='python3'
+alias please='sudo $(fc -ln -1)'
 
 # Git aliases
 alias gi='git init'
