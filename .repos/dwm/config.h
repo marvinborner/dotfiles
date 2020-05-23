@@ -18,7 +18,7 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
-/* scratchpads */
+/* scratchpad */
 static const char scratchpadname[] = "spterm";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 
@@ -40,6 +40,7 @@ static const Rule rules[] = {
 	{ NULL,			  NULL,       "WhatsApp", 1 << 7,       0,           -1 },
 	{ NULL,			  NULL,       "DISPATCH", 1 << 2,       0,           -1 },
 	{ NULL,			  "spterm",   NULL,       1 << 10,	1,	     -1 },
+	{ NULL,			  "flterm",   NULL,       1 << 10,	1,	     -1 },
 };
 
 /* layout(s) */
@@ -69,6 +70,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
+static const char *fltermcmd[] = { "st", "-t", "flterm", "-g", "120x34", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };
 static const char *musiccmd[]  = { "spotify", NULL };
 static const char *lockcmd[]  = { "slock", NULL };
@@ -77,6 +79,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,             		XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,         	XK_Return, spawn,          {.v = fltermcmd } },
 	{ MODKEY|ShiftMask,        	XK_b,      spawn,          {.v = browsercmd } },
 	{ MODKEY|ShiftMask,        	XK_s,      spawn,          {.v = musiccmd } },
 	{ MODKEY|ShiftMask,        	XK_l,      spawn,          {.v = lockcmd } },
