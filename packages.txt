@@ -156,9 +156,11 @@ pkgconf
 pulseaudio
 pulseaudio-alsa
 python-pip
+python-virtualenv
 python2
 python2-libusb1
 python2-pip
+python2-virtualenv
 qemu
 qemu-arch-extra
 qutebrowser
@@ -209,6 +211,7 @@ unrtf
 unzip
 usbutils
 v4l2loopback-dkms
+valgrind
 vi
 vim
 virtualbox
