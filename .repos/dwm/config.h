@@ -40,7 +40,7 @@ static const Rule rules[] = {
 	{ NULL,			  NULL,       "WhatsApp", 1 << 7,       0,           -1 },
 	{ NULL,			  NULL,       "DISPATCH", 1 << 2,       0,           -1 },
 	{ NULL,			  "spterm",   NULL,       1 << 10,	1,	     -1 },
-	{ NULL,			  "flterm",   NULL,       1 << 10,	1,	     -1 },
+	{ NULL,			  NULL,	      "flterm",   1 << 10,	1,	     -1 },
 };
 
 /* layout(s) */
