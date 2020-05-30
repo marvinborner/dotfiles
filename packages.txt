@@ -146,6 +146,7 @@ odt2txt
 openssl-1.0
 pacman-contrib
 pandoc
+papirus-icon-theme
 patch
 patchutils
 pavucontrol

@@ -46,7 +46,8 @@ Plug 'junegunn/fzf.vim'
 
 " Appearance
 "Plug 'flazz/vim-colorschemes'
-Plug 'tomasiser/vim-code-dark'
+"Plug 'tomasiser/vim-code-dark'
+Plug 'joshdick/onedark.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kien/rainbow_parentheses.vim'
 
@@ -107,6 +108,7 @@ set softtabstop=8
 set suffixes+=.pyc
 set t_Co=256
 set tabstop=8
+set termguicolors
 set timeoutlen=100
 set ttimeout
 set updatetime=100
@@ -262,7 +264,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Airline config
-let g:airline_theme = 'minimalist'
+let g:airline_theme = 'onedark'
 let g:airline_extensions = ['tabline', 'tagbar', 'ale', 'term']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -279,7 +281,8 @@ let g:sonicpi_stop = 'stop'
 let g:vim_redraw = 1
 
 " Colorscheme
-colorscheme codedark " or molokai
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+colorscheme onedark " or molokai
 highlight GitGutterAdd guifg=#009900 ctermfg=2
 highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 highlight GitGutterDelete guifg=#ff2222 ctermfg=1

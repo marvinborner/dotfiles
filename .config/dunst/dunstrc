@@ -10,7 +10,7 @@
     separator_height = 0
     padding = 15
     horizontal_padding = 15
-    frame_width = 0
+    frame_width = 1
     frame_color = "{color2}"
     separator_color = frame
     sort = yes
@@ -35,7 +35,7 @@
 
     icon_position = left
     max_icon_size = 45
-    icon_path = /usr/share/icons/Papirus-Dark/16x16/status:/usr/share/icons/Papirus-Dark/16x16/devices
+    icon_path = /usr/share/icons/Papirus-Dark/16x16/status:/usr/share/icons/Papirus-Dark/16x16/devices:/usr/share/icons/Papirus-Dark/16x16/actions
 
     ### History ###
 
@@ -72,21 +72,19 @@
     context = ctrl+shift+period
 
 [urgency_low]
-timeout = 2
-background = "#161418"
-foreground = "#d2d1d2"
-frame_color = "#161418"
+    timeout = 5
+    background = "#282c34"
+    foreground = "#abb2bf"
+    frame_color = "#3e4451"
 
 [urgency_normal]
-timeout = 2 
-background = "#161418"
-foreground = "#d2d1d2"
-frame_color = "#161418"
+    timeout = 5
+    background = "#282c34"
+    foreground = "#abb2bf"
+    frame_color = "#3e4451"
 
 [urgency_critical]
-timeout = 5
-background = "#161418"
-foreground = "#d2d1d2"
-frame_color = "#161418"
-frame_color = "#d5c4a1"
-separator_color = "#d5c4a1"
+    timeout = 5
+    background = "#282c34"
+    foreground = "#abb2bf"
+    frame_color = "#3e4451"

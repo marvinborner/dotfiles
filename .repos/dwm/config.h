@@ -1,21 +1,34 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
-static const unsigned int snap      = 32;       /* snap pixel */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+static const char *fonts[]          = { "Iosevka Term:pixelsize=14:antialias=true:autohint=true" };
+static const char dmenufont[]       = "Iosevka Term:pixelsize=14:antialias=true:autohint=true";
+
+static const char col_base00[]	    = "#282c34";
+static const char col_base01[]	    = "#353b45";
+static const char col_base02[]	    = "#3e4451";
+static const char col_base03[]	    = "#545862";
+static const char col_base04[]	    = "#565c64";
+static const char col_base05[]	    = "#abb2bf";
+static const char col_base06[]	    = "#b6bdca";
+static const char col_base07[]	    = "#c8ccd4";
+static const char col_base08[]	    = "#e06c75";
+static const char col_base09[]	    = "#d19a66";
+static const char col_base0A[]	    = "#e5c07b";
+static const char col_base0B[]	    = "#98c379";
+static const char col_base0C[]	    = "#56b6c2";
+static const char col_base0D[]	    = "#61afef";
+static const char col_base0E[]	    = "#c678dd";
+static const char col_base0F[]	    = "#be5046";
+
+static const char *colors[][3]	    = {
+	/*               fg          bg          border   */
+	[SchemeNorm] = { col_base05, col_base00, col_base00 },
+	[SchemeSel]  = { col_base05, col_base02, col_base02 },
 };
 
 /* scratchpad */
@@ -68,7 +81,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_base00, "-nf", col_base05, "-sb", col_base02, "-sf", col_base05, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *fltermcmd[] = { "st", "-t", "flterm", "-g", "120x34", NULL };
 static const char *browsercmd[]  = { "qutebrowser", NULL };

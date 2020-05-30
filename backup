@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
 rm -rf .config/ .repos/ .scripts/ .boilerplates/
-mkdir -p .config/{dunst,gtk-2.0,gtk-3.0,nvim,zathura,mpv} .repos
+mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv} .repos
 
 # Scripts
 cp -r "$HOME"/.scripts/ .
 
 # Configs
 cp "$HOME"/.config/dunst/dunstrc .config/dunst/
+cp "$HOME"/.config/qutebrowser/config.py .config/qutebrowser/
 cp "$HOME"/.config/gtk-2.0/* .config/gtk-2.0/
 cp "$HOME"/.config/gtk-3.0/* .config/gtk-3.0/
 cp "$HOME"/.config/nvim/init.vim .config/nvim/
