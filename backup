@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+printf "\033[0;34m"
+
+echo "Cleaning previous configs"
 rm -rf .config/ .repos/ .scripts/ .boilerplates/
 mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv} .repos
+
+echo "Copying configs"
 
 # Scripts
 cp -r "$HOME"/.scripts/ .
@@ -16,21 +21,29 @@ cp "$HOME"/.config/zathura/zathurarc .config/zathura/
 cp "$HOME"/.config/mpv/mpv.conf .config/mpv/
 cp "$HOME"/.config/uncrustify.cfg .config/
 
-# Boilerplates
-cp -r "$HOME"/.boilerplates .
-
-# Crypto keys etc.
-scp -r "$HOME"/.crypto/ root@10.0.0.33:/mnt/ssd/
-
-# Repos
-cp -r "$HOME"/.repos/* .repos/
-find .repos/ -type d -name ".git" -exec rm -rf {} +
-
 # Inits
 cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
 cp -r "$HOME"/.lein .
 
+# Boilerplates
+cp -r "$HOME"/.boilerplates .
+
+# Crypto keys etc.
+echo "Uploading keys"
+scp -rq "$HOME"/.crypto/ root@10.0.0.33:/mnt/ssd/
+
+# Repos
+echo "Cleaning suckless configs"
+cp -r "$HOME"/.repos/* .repos/
+find .repos/ -type d -name ".git" -exec rm -rf {} +
+find .repos/ -type f -exec sh -c "file -i '{}' | grep -q 'charset=binary'" \; -delete
+
 # Installed programs
+echo "Getting package list"
 pacman -Qqe > packages.txt
 
-git status
+printf "\nChanged files:\n"
+printf "\033[0;32m"
+git status -s | cut -c4-
+
+printf "\033[0m"

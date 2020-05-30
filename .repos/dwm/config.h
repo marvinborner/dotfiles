@@ -1,7 +1,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
 static const unsigned int snap      = 16;       /* snap pixel */
 static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -27,8 +27,8 @@ static const char col_base0F[]	    = "#be5046";
 
 static const char *colors[][3]	    = {
 	/*               fg          bg          border   */
-	[SchemeNorm] = { col_base05, col_base00, col_base00 },
-	[SchemeSel]  = { col_base05, col_base02, col_base02 },
+	[SchemeNorm] = { col_base05, col_base00, col_base02 },
+	[SchemeSel]  = { col_base05, col_base02, col_base00 },
 };
 
 /* scratchpad */

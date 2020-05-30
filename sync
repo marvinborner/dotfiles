@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 # The most awesome sync script! :)
 
-git pull || exit 1
-sudo pacman -Sy
-comm -23 <(sort packages.txt) <(pacman -Qqe | sort) | yay -S --needed -
-for d in ./.repos/*/ ; do (cd "$d" && sudo make install); done || exit 1
-scp -r root@10.0.0.33:/mnt/ssd/.crypto "$HOME"/
+printf "\033[0;34m"
+echo "Pulling newest configs"
+git pull --quiet || exit 1
+
+printf "\033[0;34m"
+echo "Syncing packages"
+sudo pacman -Syq &> /dev/null
+
+printf "\033[0;34m"
+echo "Comparing installed packages"
+comm -23 <(sort packages.txt) <(pacman -Qqe | sort) | yay -Sq --needed -
+
+printf "\033[0;34m"
+echo "Compiling local repos"
+for d in ./.repos/*/ ; do (cd "$d" && sudo make clean install &> /dev/null); done || exit 1
+
+printf "\033[0;34m"
+echo "Syncing crypto files from server"
+scp -rq root@10.0.0.33:/mnt/ssd/.crypto "$HOME"/
+
+printf "\033[0m"
