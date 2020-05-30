@@ -3,7 +3,7 @@
 notify-send -t 10000 -i "dialog-xml-editor" "Waiting for internet connection..."
 while ! ping -qc1 8.8.8.8 ; do sleep 0.1 ; done
 notify-send -t 2000 -i "dialog-yes" "Found network"
-notify-send -t 5000 -i "dialog-layers" "Starting programs"
+#notify-send -t 5000 -i "dialog-layers" "Starting programs"
 
 exec qutebrowser &
 exec st &
@@ -18,5 +18,4 @@ notify-send -t 10000 -i "im-user" "Welcome back, Melvin!"
 
 # Musica! :)
 exec spotify &
-sleep 5
-dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
+while ! dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play ; do sleep 0.5 ; done
