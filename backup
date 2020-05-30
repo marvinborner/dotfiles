@@ -18,6 +18,9 @@ cp "$HOME"/.config/uncrustify.cfg .config/
 # Boilerplates
 cp -r "$HOME"/.boilerplates .
 
+# Crypto keys etc.
+scp -r "$HOME"/.crypto/ root@10.0.0.33:/mnt/ssd/
+
 # Repos
 cp -r "$HOME"/.repos/* .repos/
 find .repos/ -type d -name ".git" -exec rm -rf {} +
