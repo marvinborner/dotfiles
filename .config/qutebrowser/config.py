@@ -262,3 +262,6 @@ c.colors.tabs.selected.even.bg = base02
 # color).
 c.colors.webpage.bg = base00
 c.colors.webpage.prefers_color_scheme_dark
+
+c.content.user_stylesheets = ["user.css"]
+config.bind('<Ctrl-i>', 'config-cycle content.user_stylesheets user.css ""')

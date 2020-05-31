@@ -1,0 +1,87 @@
+:root {
+	--bg: #282c34;
+	--bg-sel: #3e4451;
+	--fg: #abb2bf;
+	--hl: #b6bdca;
+}
+
+/* General style */
+*:not(svg) {
+	background: var(--bg) !important;
+	background-color: var(--bg) !important;
+	border-color: var(--bg-sel) !important;
+	color: var(--fg) !important;	
+}
+
+*:before:not(svg) {
+	background: var(--bg) !important;
+	background-color: var(--bg) !important;
+	border-color: var(--bg-sel) !important;
+	color: var(--fg) !important;	
+}
+
+*:after:not(svg) {
+	background: var(--bg) !important;
+	background-color: var(--bg) !important;
+	border-color: var(--bg-sel) !important;
+	color: var(--fg) !important;	
+}
+
+*:hover:not(svg) {
+	background: var(--bg) !important;
+	background-color: var(--bg) !important;
+	border-color: var(--bg-sel) !important;
+	color: var(--fg) !important;	
+}
+
+*:focus:not(svg) {
+	background: var(--bg) !important;
+	background-color: var(--bg) !important;
+	border-color: var(--bg-sel) !important;
+	color: var(--fg) !important;	
+}
+
+a {
+	color: var(--hl) !important;	
+	text-decoration: none !important;
+}
+
+a:hover {
+	color: var(--hl) !important;	
+	text-decoration: underline !important;
+}
+
+hr {
+	color: var(--bg-sel) !important;
+	z-index: 99;
+}
+
+/* Specific fixes */
+.bg-gray, .bg-gray-light { background: var(--bg) !important; } /* GH */
+.link-gray-dark, .text-gray { color: var(--fg) !important; } /* GH */
+.mb-4.js-notice { display: none !important; } /* GH */
+
+.w3-light-grey, .w3-white { background: var(--bg) !important; } /* W3 */
+
+.-main a.-logo, ol.list-reset.grid.gs4, #left-sidebar.ps-relative { display: none !important; } /* SO */
+
+.RNNXgb { border: none !important; } /* Google */
+
+.ytp-gradient-bottom { display: none !important; } /* YT */
+.ytp-preview, .ytp-tooltip *, .ytp-chrome-bottom *, .ytp-chrome-bottom, .ytp-chrome-bottom:hover, .ytp-chrome-controls:hover, .ytp-progress-bar-padding:hover { background-color: transparent !important; } /* YT */
+.ytp-swatch-background-color { background: var(--fg) !important; } /* YT */
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+    background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--bg-sel);
+}
+
+::-webkit-scrollbar-corner {
+    background: var(--bg);
+}
