@@ -4,7 +4,7 @@ printf "\033[0;34m"
 
 echo "Cleaning previous configs"
 rm -rf .config/ .repos/ .scripts/ .boilerplates/
-mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv} .repos
+mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv,spicetify} .repos
 
 echo "Copying configs"
 
@@ -20,6 +20,7 @@ cp "$HOME"/.config/nvim/init.vim .config/nvim/
 cp "$HOME"/.config/zathura/zathurarc .config/zathura/
 cp "$HOME"/.config/mpv/mpv.conf .config/mpv/
 cp "$HOME"/.config/uncrustify.cfg .config/
+cp -r "$HOME"/.config/spicetify/{config.ini,Themes/} .config/spicetify/
 
 # Inits
 cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .

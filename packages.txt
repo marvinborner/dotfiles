@@ -179,6 +179,7 @@ shfmt
 signal-desktop
 sonic-pi
 speedtest-cli
+spicetify-cli
 spotify
 spotifywm-git
 strace
