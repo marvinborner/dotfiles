@@ -283,9 +283,9 @@ let g:vim_redraw = 1
 " Colorscheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
 colorscheme onedark " or molokai
-highlight GitGutterAdd guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+"highlight GitGutterAdd guifg=#009900 ctermfg=2
+"highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+"highlight GitGutterDelete guifg=#ff2222 ctermfg=1
 
 " TODOs
 command Td :Rg! TODO
