@@ -56,6 +56,7 @@ dvgrab
 efibootmgr
 exercism-bin
 fd
+file-roller
 firefox
 flex
 font-bh-ttf
@@ -81,7 +82,6 @@ htop
 hub
 intel2gas
 inxi
-jdownloader2
 jitsi-meet-desktop-bin
 joker-bin
 jp2a
@@ -192,6 +192,9 @@ texlive-bin
 texlive-core
 the_silver_searcher
 thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
+thunar-volman
 thunderbird
 thunderbird-i18n-de
 thunderbird-i18n-en-us
