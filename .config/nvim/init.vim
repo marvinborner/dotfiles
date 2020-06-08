@@ -222,6 +222,10 @@ let g:ale_pattern_options = {
 \ '\.cs$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
 \ '\.java$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
 \ '\.d$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
+\ '\.js$': {'ale_linters': ['eslint'], 'ale_fixers': ['prettier']},
+\ '\.css$': {'ale_linters': [], 'ale_fixers': ['prettier']},
+\ '\.html$': {'ale_linters': [], 'ale_fixers': ['prettier']},
+\ '\.json$': {'ale_linters': [], 'ale_fixers': ['prettier']},
 \}
 let g:ale_pattern_options_enabled = 1
 autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'

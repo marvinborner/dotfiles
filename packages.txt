@@ -154,6 +154,7 @@ perl-proc-processtable
 phantomjs-bin
 php
 pkgconf
+prettier
 pulseaudio
 pulseaudio-alsa
 python-pip
