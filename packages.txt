@@ -68,6 +68,7 @@ geckodriver
 git
 gnu-free-fonts
 gnu-netcat
+gotop-bin
 groff
 grub
 gst-libav
