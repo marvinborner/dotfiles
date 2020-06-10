@@ -17,7 +17,7 @@ out/%.o: src/%.c
 
 
 clean:
-	rm -rf out/ $(TARGET)
+	rm -rf out/
 
 -include $(OBJECTS:.o=.d)
 
