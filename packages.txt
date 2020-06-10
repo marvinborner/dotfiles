@@ -90,6 +90,7 @@ inxi
 jitsi-meet-desktop-bin
 joker-bin
 jp2a
+jq
 kbfs
 keepassxc
 keybase
