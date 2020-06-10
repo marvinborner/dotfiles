@@ -19,6 +19,10 @@ alsa-utils
 android-tools
 antiword
 apulse
+arduino
+arduino-avr-core
+arduino-cli
+arduino-docs
 asciinema
 at-spi2-atk
 audacity
@@ -151,6 +155,7 @@ papirus-icon-theme
 patch
 patchutils
 pavucontrol
+pdfjs
 perl-proc-processtable
 phantomjs-bin
 php
