@@ -127,6 +127,7 @@ nmap <C-q> :BD<CR>
 nmap <C-j> :bn<CR>
 nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
+nnoremap S :%s//g<Left><Left>
 
 " Fix dumb delete combo
 nnoremap d "_d
@@ -157,15 +158,19 @@ nmap <Leader>l <C-w>l
 nmap <Leader>t :term<CR>
 tnoremap <C-q> <C-\><C-n>:BD!<CR>
 tnoremap <Leader><ESC> <C-\><C-n>
-nmap <Leader>r :!./run<CR>
-nmap <Leader>R :terminal<CR>./run<CR>
 autocmd TermOpen * startinsert
+
+" Execution
+nmap <Leader>a :!echo <c-r>% \| entr compile <c-r>% &<CR><CR>
+nmap <Leader>c :w! \| !compile <c-r>%<CR>
+nmap <Leader>p :!preview <c-r>%<CR><CR>
+nmap <Leader>r :w! \| !./run<CR>
+nmap <Leader>R :w! \| terminal<CR>./run<CR>
 
 " FZF
 nmap ; :Files<CR>
 nmap <Leader>B :Buffers<CR>
-nmap <Leader>C :Colors<CR>
-nmap <Leader>c :Commits<CR>
+nmap <Leader>C :Commits<CR>
 nmap <Leader>s :Rg!<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --files --follow -g "!{.git,node_modules}/*" 2>/dev/null'
 command! -bang -nargs=* Rg
@@ -204,30 +209,43 @@ let g:ale_sign_warning = '▲'
 let g:ale_sign_error = '✗'
 highlight link ALEWarningSign String
 highlight link ALEErrorSign Title
-nmap <Leader>F :ALEFix<CR>
 nmap ]w :ALENextWrap<CR>
 nmap [w :ALEPreviousWrap<CR>
-nmap <Leader>f <Plug>(ale_fix)
+nmap <Leader>F <Plug>(ale_fix)
 augroup VimDiff
 	autocmd!
 	autocmd VimEnter,FilterWritePre * if &diff | ALEDisable | endif
 augroup END
-let g:ale_pattern_options = {
-\ '\.c$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
-\ '\.cpp$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
-\ '\.h$': {'ale_linters': ['clangtidy'], 'ale_fixers': ['clang-format']},
-\ '\.asm$': {'ale_linters': ['gcc'], 'ale_fixers': ['trim_whitespace']},
-\ '\.clj$': {'ale_linters': ['joker'], 'ale_fixers': []},
-\ '\.sh$': {'ale_linters': ['shellcheck'], 'ale_fixers': ['shfmt']},
-\ '\.cs$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
-\ '\.java$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
-\ '\.d$': {'ale_linters': [], 'ale_fixers': ['uncrustify']},
-\ '\.js$': {'ale_linters': ['eslint'], 'ale_fixers': ['prettier']},
-\ '\.css$': {'ale_linters': [], 'ale_fixers': ['prettier']},
-\ '\.html$': {'ale_linters': [], 'ale_fixers': ['prettier']},
-\ '\.json$': {'ale_linters': [], 'ale_fixers': ['prettier']},
+let g:ale_linters = {
+\ 'asm': ['gcc'],
+\ 'c': ['clangtidy'],
+\ 'clj': ['joker'],
+\ 'cpp': ['clangtidy'],
+\ 'elixir': ['credo', 'dialyxir', 'dogma'],
+\ 'go': ['gofmt', 'golint', 'go vet'],
+\ 'hack': ['hack'],
+\ 'javascript': ['eslint'],
+\ 'perl': ['perlcritic'],
+\ 'python': ['flake8', 'mypy', 'pylint'],
+\ 'rust': ['cargo'],
+\ 'sh': ['shellcheck'],
+\ 'vue': ['eslint', 'vls'],
+\ 'zsh': ['shell'],
 \}
-let g:ale_pattern_options_enabled = 1
+let g:ale_fixers = {
+\ '*': ['remove_trailing_lines', 'trim_whitespace'],
+\ 'c': ['clang-format'],
+\ 'cpp': ['clang-format'],
+\ 'cs': ['uncrustify'],
+\ 'css': ['prettier'],
+\ 'd': ['uncrustify'],
+\ 'html': ['prettier'],
+\ 'java': ['uncrustify'],
+\ 'javascript': ['prettier'],
+\ 'json': ['jq'],
+\ 'sh': ['shfmt'],
+\}
+let g:ale_fix_on_save = 1
 autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'
 autocmd FileType java let g:ale_c_uncrustify_options = '-l JAVA'
 autocmd FileType d let g:ale_c_uncrustify_options = '-l D'
@@ -238,14 +256,9 @@ let g:clj_fmt_autosave=0
 " Custom actions for different filetypes
 augroup ft_files
 	au!
-	au FileType c let b:auto_save=1
-	au FileType cs let b:auto_save=1
-	au FileType cpp let b:auto_save=1
-	au FileType clojure let b:auto_save=1
 	au FileType clojure nmap <Leader>F :Cljfmt<CR>
 	au FileType clojure RainbowParenthesesLoadRound
 	au FileType clojure RainbowParenthesesActivate
-	au FileType asm set ft=nasm
 augroup END
 
 " File explorer
@@ -286,7 +299,7 @@ let g:vim_redraw = 1
 
 " Colorscheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-colorscheme onedark " or molokai
+colorscheme onedark
 "highlight GitGutterAdd guifg=#009900 ctermfg=2
 "highlight GitGutterChange guifg=#bbbb00 ctermfg=3
 "highlight GitGutterDelete guifg=#ff2222 ctermfg=1
@@ -303,7 +316,10 @@ if &diff
 	highlight! link DiffText MatchParen
 endif
 
-" Read strange files
+" File extension actions
+autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
+autocmd BufRead,BufNewFile *.asm set filetype=nasm
+
 autocmd BufReadPre *.doc silent set ro
 autocmd BufReadPost *.doc silent %!antiword "%"
 

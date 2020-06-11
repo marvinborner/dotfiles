@@ -37,6 +37,7 @@ bind-tools
 binutils
 bison
 bridge-utils
+cabextract
 ccache
 cdrtools
 celt
@@ -58,6 +59,7 @@ downgrade
 dunst
 dvgrab
 efibootmgr
+entr
 exercism-bin
 fd
 file-roller
@@ -116,6 +118,7 @@ linux-zen
 linux-zen-docs
 linux-zen-headers
 llvm
+lowdown
 lshw
 lsscsi
 m4
