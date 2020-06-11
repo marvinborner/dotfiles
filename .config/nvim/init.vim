@@ -65,6 +65,7 @@ set bg=dark
 set cindent
 set cinkeys-=0#
 set cino=
+set clipboard=unnamedplus
 set copyindent
 set encoding=utf-8
 set ff=unix
@@ -129,7 +130,8 @@ nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
 nnoremap S :%s//g<Left><Left>
 
-" Fix dumb delete combo
+" Fix dumb deletion register
+noremap x "_x
 nnoremap d "_d
 vnoremap d "_d
 
