@@ -184,7 +184,6 @@ rsync
 rust
 scrcpy
 screen
-scrot
 shellcheck
 shfmt
 signal-desktop

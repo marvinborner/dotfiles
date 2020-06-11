@@ -131,7 +131,6 @@ nmap <Leader>S :nohlsearch<CR>
 nnoremap S :%s//g<Left><Left>
 
 " Fix dumb deletion register
-noremap x "_x
 nnoremap d "_d
 vnoremap d "_d
 
