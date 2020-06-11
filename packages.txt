@@ -153,6 +153,8 @@ nyancat
 obs-studio
 odt2txt
 openssl-1.0
+otf-latin-modern
+otf-latinmodern-math
 pacman-contrib
 pandoc
 papirus-icon-theme

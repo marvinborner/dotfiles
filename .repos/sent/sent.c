@@ -25,6 +25,8 @@
 
 char *argv0;
 
+int use_dark_scheme = 0;
+
 /* macros */
 #define LEN(a)         (sizeof(a) / sizeof(a)[0])
 #define LIMIT(x, a, b) (x) = (x) < (a) ? (a) : (x) > (b) ? (b) : (x)
@@ -97,6 +99,7 @@ static void cleanup(int slidesonly);
 static void reload(const Arg *arg);
 static void load(FILE *fp);
 static void advance(const Arg *arg);
+static void toggle_theme(const Arg *arg);
 static void quit(const Arg *arg);
 static void resize(int width, int height);
 static void run();
@@ -480,6 +483,18 @@ advance(const Arg *arg)
 }
 
 void
+toggle_theme(const Arg *arg)
+{
+	use_dark_scheme ^= 1;
+	if (use_dark_scheme)
+		sc = drw_scm_create(d, dark_colors, 2);
+	else
+		sc = drw_scm_create(d, colors, 2);
+	drw_setscheme(d, sc);
+	reload(NULL);
+}
+
+void
 quit(const Arg *arg)
 {
 	running = 0;
@@ -590,7 +605,11 @@ xinit()
 
 	if (!(d = drw_create(xw.dpy, xw.scr, xw.win, xw.w, xw.h)))
 		die("sent: Unable to create drawing context");
-	sc = drw_scm_create(d, colors, 2);
+
+	if (use_dark_scheme)
+		sc = drw_scm_create(d, dark_colors, 2);
+	else
+		sc = drw_scm_create(d, colors, 2);
 	drw_setscheme(d, sc);
 	XSetWindowBackground(xw.dpy, xw.win, sc[ColBg].pixel);
 
@@ -691,6 +710,9 @@ main(int argc, char *argv[])
 	case 'v':
 		fprintf(stderr, "sent-"VERSION"\n");
 		return 0;
+	case 'd':
+		use_dark_scheme = 1;
+		break;
 	default:
 		usage();
 	} ARGEND
