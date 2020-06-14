@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
 
+printf "\033[0;31m"
+if [ -z "$HOME" ] || ! [ -x "$(command -v pacman)" ]; then
+	echo "Something went wrong!"
+	printf "\033[0m"
+	exit 1
+fi
+
 printf "\033[0;34m"
 
 echo "Cleaning previous configs"
-rm -rf .config/ .repos/ .scripts/ .boilerplates/
-mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv,spicetify} .repos
+rm -rf .config/ .repos/ .scripts/ .boilerplates/ .etc/
+mkdir -p .config/{dunst,qutebrowser,gtk-2.0,gtk-3.0,nvim,zathura,mpv,spicetify}/ .etc/X11/xorg.conf.d/ .repos/
 
 echo "Copying configs"
 
@@ -22,6 +29,10 @@ cp "$HOME"/.config/mpv/mpv.conf .config/mpv/
 cp "$HOME"/.config/uncrustify.cfg .config/
 cp -r "$HOME"/.config/spicetify/{config.ini,Themes/} .config/spicetify/
 
+# Root configs
+cp /etc/logid.cfg .etc/
+cp /etc/X11/xorg.conf.d/* .etc/X11/xorg.conf.d/
+
 # Inits
 cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
 cp -r "$HOME"/.lein .
@@ -30,6 +41,7 @@ cp -r "$HOME"/.lein .
 cp -r "$HOME"/.boilerplates .
 
 # Crypto keys etc.
+printf "\033[0;34m"
 echo "Uploading keys"
 scp -rq "$HOME"/.crypto/ root@10.0.0.33:/mnt/ssd/
 
@@ -40,9 +52,11 @@ find .repos/ -type d -name ".git" -exec rm -rf {} +
 find .repos/ -type f -exec sh -c "file -i '{}' | grep -q 'charset=binary'" \; -delete
 
 # Installed programs
+printf "\033[0;34m"
 echo "Getting package list"
-pacman -Qqe > packages.txt
+pacman -Qqe >packages.txt
 
+printf "\033[0;34m"
 printf "\nChanged files:\n"
 printf "\033[0;32m"
 git status -s | cut -c4-

@@ -60,6 +60,7 @@ dunst
 dvgrab
 efibootmgr
 entr
+evtest
 exercism-bin
 fd
 file-roller
@@ -118,6 +119,7 @@ linux-zen
 linux-zen-docs
 linux-zen-headers
 llvm
+logiops-git
 lowdown
 lshw
 lsscsi

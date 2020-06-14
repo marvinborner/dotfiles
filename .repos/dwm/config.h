@@ -67,7 +67,7 @@ static const Rule rules[] = {
 	{ "St", NULL, NULL, 0, 0, 1, 0, -1 },
 	{ NULL, "spterm", NULL, SPTAG(0), 1, 1, 0, -1 },
 	{ NULL, "spcalc", NULL, SPTAG(1), 1, 1, 0, -1 },
-	{ NULL, NULL, "DISPATCH", 1 << 2, 0, 1, 0, -1 },
+	//{ NULL, NULL, "REPL", 1 << 2, 0, 1, 0, -1 },
 	{ NULL, NULL, "WhatsApp", 1 << 7, 0, 0, 0, -1 },
 };
 
