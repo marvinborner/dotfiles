@@ -60,6 +60,7 @@ dunst
 dvgrab
 efibootmgr
 entr
+evince
 evtest
 exercism-bin
 fd

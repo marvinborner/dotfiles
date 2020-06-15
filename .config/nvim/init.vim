@@ -244,6 +244,7 @@ let g:ale_fixers = {
 \ 'java': ['uncrustify'],
 \ 'javascript': ['prettier'],
 \ 'json': ['jq'],
+\ 'markdown': ['prettier'],
 \ 'sh': ['shfmt'],
 \}
 let g:ale_fix_on_save = 1
