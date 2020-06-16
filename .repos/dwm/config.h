@@ -177,6 +177,9 @@ static Key keys[] = {
 	/* V is automatically bound above in STACKKEYS */
 	{ MODKEY, XK_b, togglebar, { 0 } },
 
+	{ MODKEY, XK_space, zoom, { 0 } },
+	{ MODKEY | ShiftMask, XK_space, togglefloating, { 0 } },
+
 	{ 0, XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 15") },
 	{ 0, XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 15") },
 };

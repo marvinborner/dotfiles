@@ -54,12 +54,17 @@ export EDITOR='nvim'
 export TERM='st'
 export TERMINAL='st'
 export JAVA_HOME=/usr/lib/jvm/default
-export PATH=/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin:$JAVA_HOME:/opt/android-sdk/tools/bin
+export PATH=/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin:$JAVA_HOME:/opt/android-sdk/tools/bin:/opt/android-sdk/tools
 export ANDROID_SDK_ROOT=/opt/android-sdk
+export ANDROID_HOME=/opt/android-sdk
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"
 export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.cfg"
-export FZF_DEFAULT_COMMAND='rg --line-number --color never --no-heading ""'
+
+# Finding
+export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--bind ctrl-d:half-page-down,ctrl-u:half-page-up'
+alias ff='fzf --preview '\''bat --style=numbers --color=always --line-range :500 {}'\'' --bind "enter:execute(nvim {})"'
+alias tree='rg --files'
 
 # Superuser customization
 [ "$(id -u)" == "0" ] && export PS1="\[\e[01;31m\]$PS1\[\e[00m\]"

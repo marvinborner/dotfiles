@@ -31,6 +31,7 @@ autoconf
 automake
 base
 bash-completion
+bat
 bc
 bdf-spleen
 bdf2c
@@ -216,7 +217,6 @@ thunderbird-i18n-de
 thunderbird-i18n-en-us
 tmate
 transmission-gtk
-tree
 ttf-dejavu
 ttf-inconsolata
 ttf-iosevka-term
