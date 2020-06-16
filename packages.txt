@@ -16,6 +16,7 @@ alsa-firmware
 alsa-oss
 alsa-plugins
 alsa-utils
+android-sdk
 android-tools
 antiword
 apulse
