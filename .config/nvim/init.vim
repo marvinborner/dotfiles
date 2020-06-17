@@ -128,6 +128,7 @@ nmap <C-q> :BD<CR>
 nmap <C-j> :bn<CR>
 nmap <C-k> :bp<CR>
 nmap <Leader>S :nohlsearch<CR>
+nmap <Leader>z :setlocal foldmethod=syntax<CR>
 nnoremap S :%s//g<Left><Left>
 
 " Fix dumb deletion register
