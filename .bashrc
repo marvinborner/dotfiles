@@ -42,9 +42,13 @@ alias gi='git init'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
-alias gp='nohup git push --quiet &> /dev/null &'
+alias gp='setsid -f git push --quiet'
 alias gd='git diff'
 alias gr='git reset'
+
+# Functions
+disasm() { objdump -drwC -Mintel "$1" | less; }
+disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
 
 # Settings
 export PS1='[\W] '
@@ -64,6 +68,7 @@ export UNCRUSTIFY_CONFIG="$HOME/.config/uncrustify.cfg"
 export FZF_DEFAULT_COMMAND='rg --files'
 export FZF_DEFAULT_OPTS='--bind ctrl-d:half-page-down,ctrl-u:half-page-up'
 alias ff='fzf --preview '\''bat --style=numbers --color=always --line-range :500 {}'\'' --bind "enter:execute(nvim {})"'
+alias fp='fzf --preview '\''bat --style=numbers --color=always --line-range :500 {}'\'' --bind "enter:execute(preview {})"'
 alias tree='rg --files'
 
 # Superuser customization

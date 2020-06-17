@@ -1,9 +1,12 @@
 #!/usr/bin/env sh
 
+if [ -z "$1" ]; then exit 1; fi
+
 basename="$(echo "$1" | sed 's/\.[^\/.]*$//')"
 
 case "$1" in
-*.tex | *.m[dse] | *.[rR]md | *.mom | *.[0-9]) compile "$1" && setsid -f xdg-open "$basename".pdf >/dev/null 2>&1 ;;
+*.tex | *.m[dse] | *.[rR]md | *.mom | *.[0-9]) compile "$1" && preview "$basename".pdf >/dev/null 2>&1 ;;
 *.html) setsid -f "$BROWSER" "$basename".html >/dev/null 2>&1 ;;
 *.sent) setsid -f sent "$1" >/dev/null 2>&1 ;;
+*) setsid -f xdg-open "$1" >/dev/null 2>&1 ;;
 esac

@@ -148,6 +148,7 @@ nerd-fonts-hack
 nerd-fonts-source-code-pro
 net-tools
 nmap
+nnn
 nodejs
 noto-fonts-emoji
 npm

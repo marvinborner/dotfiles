@@ -41,7 +41,7 @@ for d in ./.repos/*/; do (cd "$d" && sudo make clean install &>/dev/null); done 
 printf "\033[0;34m"
 echo "Copying configs"
 printf "\033[0;37m"
-cp -rv .config/ .lein/ .scripts/ .bash_profile .bashrc .xinitrc .Xresources "$HOME"/
+cp -rv .config/ .local/ .lein/ .scripts/ .boilerplates/ .bash_profile .bashrc .xinitrc .Xresources "$HOME"/
 sudo cp -rv .etc/* /etc/
 
 printf "\033[0;34m"
