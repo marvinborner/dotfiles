@@ -60,6 +60,7 @@ dmidecode
 downgrade
 dunst
 dvgrab
+ed
 efibootmgr
 entr
 evince
