@@ -164,6 +164,7 @@ otf-latin-modern
 otf-latinmodern-math
 pacman-contrib
 pandoc
+pandoc-citeproc
 papirus-icon-theme
 patch
 patchutils
@@ -185,6 +186,7 @@ python2-virtualenv
 qemu
 qemu-arch-extra
 qutebrowser
+r
 rclone
 read-edid
 ripgrep
@@ -207,8 +209,18 @@ sudo
 sxiv
 telegram-desktop
 texinfo
-texlive-bin
+texlive-bibtexextra
 texlive-core
+texlive-fontsextra
+texlive-formatsextra
+texlive-games
+texlive-humanities
+texlive-latexextra
+texlive-music
+texlive-pictures
+texlive-pstricks
+texlive-publishers
+texlive-science
 the_silver_searcher
 thunar
 thunar-archive-plugin
@@ -217,6 +229,7 @@ thunar-volman
 thunderbird
 thunderbird-i18n-de
 thunderbird-i18n-en-us
+tk
 tmate
 transmission-gtk
 ttf-dejavu

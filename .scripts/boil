@@ -13,6 +13,8 @@ if [ "${mode}" = "clj" ]; then
 	lein new app "$name"
 	cp "$boilerplates/$mode/run" "$name"
 	rm -rf "$name/CHANGELOG.md" "$name/LICENSE" "$name/README.md" "$name/doc/"
+elif [ "${mode}" = "md" ] || [ "${mode}" = "tex" ] || [ "${mode}" = "ms" ]; then
+	cp "$boilerplates/txt/$mode.$mode" "$name.$mode"
 else
 	cp -r "$boilerplates/$mode" "$name" || echo "Something went wrong"
 fi
