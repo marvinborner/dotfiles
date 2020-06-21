@@ -1,0 +1,8 @@
+[user]
+	email = develop@marvinborner.de
+	name = Marvin Borner
+	signingkey = D2825BEE80C6BBA7903132A4EE7C47A7F1E65C4B
+[pull]
+	ff = only
+[commit]
+	gpgsign = true
