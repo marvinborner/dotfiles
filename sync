@@ -41,7 +41,7 @@ echo
 printf "\033[0;34m"
 echo "Copying configs"
 printf "\033[0;37m"
-cp -rv .config/ .local/ .lein/ .scripts/ .boilerplates/ .repos/ .bash_profile .bashrc .xinitrc .Xresources "$HOME"/
+cp -rv .config/ .local/ .lein/ .scripts/ .boilerplates/ .repos/ .bash_profile .bashrc .xinitrc .Xresources .gitconfig "$HOME"/
 sudo cp -rv .etc/* /etc/
 
 printf "\033[0;34m"

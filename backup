@@ -35,7 +35,7 @@ cp /etc/logid.cfg .etc/
 cp /etc/X11/xorg.conf.d/* .etc/X11/xorg.conf.d/
 
 # Inits
-cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources .
+cp "$HOME"/.bash_profile "$HOME"/.bashrc "$HOME"/.xinitrc "$HOME"/.Xresources "$HOME"/.gitconfig .
 cp -r "$HOME"/.lein .
 
 # Boilerplates

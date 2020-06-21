@@ -42,9 +42,10 @@ alias gi='git init'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
-alias gp='setsid -f git push --quiet'
+alias gp='setsid -f git push --quiet' # yeah..
 alias gd='git diff'
 alias gr='git reset'
+alias gl='git log'
 
 # Functions
 disasm() { objdump -drwC -Mintel "$1" | less; }
