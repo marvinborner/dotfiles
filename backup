@@ -50,6 +50,7 @@ scp -rq "$HOME"/.crypto/ root@10.0.0.33:/mnt/ssd/
 echo "Cleaning suckless configs"
 cp -r "$HOME"/.repos/* .repos/
 find .repos/ -type d -name ".git" -exec rm -rf {} +
+find .repos/ -type f -name ".gitignore" -exec rm -f {} +
 find .repos/ -type f -exec sh -c "file -i '{}' | grep -q 'charset=binary'" \; -delete
 
 # Installed programs
