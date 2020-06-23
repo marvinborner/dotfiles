@@ -9,7 +9,8 @@ case "$ext" in
 ms) preconv "$file" | refer -PS -e | groff -me -ms -kept -T pdf >"$base".pdf ;;
 [0-9]) preconv "$file" | refer -PS -e | groff -mandoc -T pdf >"$base".pdf ;;
 #md) lowdown -d nointem -e super "$file" -Tms | groff -t -mspdf -k -Kutf8 -T pdf >"$base".pdf ;;
-md) pandoc "$file" --pdf-engine=xelatex -V geometry:a4paper -V geometry:margin=2cm -V toc-title='Table of contents' -o "$base.pdf" ;;
+#md) pandoc "$file" --pdf-engine=xelatex -V geometry:a4paper -V geometry:margin=2cm -V toc-title='Table of contents' -o "$base.pdf" ;; # Xelatex is slow af
+md) pandoc "$file" -V geometry:a4paper -V geometry:margin=2cm -V toc-title='Table of contents' -o "$base.pdf" ;;
 [rR]md) Rscript -e "rmarkdown::render('$file', quiet=TRUE)" ;;
 tex) pdflatex --output-directory "$dir" "$base" ;;
 sent) setsid -f sent "$file" 2>/dev/null ;;
