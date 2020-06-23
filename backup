@@ -26,7 +26,7 @@ cp "$HOME"/.config/gtk-3.0/* .config/gtk-3.0/
 cp "$HOME"/.config/nvim/init.vim .config/nvim/
 cp "$HOME"/.config/zathura/zathurarc .config/zathura/
 cp "$HOME"/.config/mpv/mpv.conf .config/mpv/
-cp "$HOME"/.config/uncrustify.cfg .config/
+cp "$HOME"/.config/uncrustify.cfg "$HOME"/.config/mimeapps.list .config/
 cp -r "$HOME"/.config/spicetify/{config.ini,Themes/} .config/spicetify/
 cp -r "$HOME"/.local/share/applications/ .local/share/
 
