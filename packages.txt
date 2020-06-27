@@ -35,6 +35,7 @@ bat
 bc
 bdf-spleen
 bdf2c
+biber
 bind-tools
 binutils
 bison
@@ -90,6 +91,7 @@ gst-plugins-ugly
 gtk-theme-arc-gruvbox-git
 gutenprint
 hdparm
+heroku-cli
 htop
 hub
 intel2gas
@@ -103,11 +105,8 @@ keepassxc
 keybase
 keybase-gui
 leiningen
-lib32-dbus-glib
 lib32-gcc-libs
 lib32-glibc
-lib32-gtk2
-lib32-libxt
 libffado
 libisoburn
 libnewt
