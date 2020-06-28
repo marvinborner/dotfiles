@@ -15,6 +15,8 @@ if [ "${mode}" = "clj" ]; then
 	rm -rf "$name/CHANGELOG.md" "$name/LICENSE" "$name/README.md" "$name/doc/"
 elif [ "${mode}" = "md" ] || [ "${mode}" = "tex" ] || [ "${mode}" = "ms" ]; then
 	cp "$boilerplates/txt/$mode.$mode" "$name.$mode"
+elif [ "${mode}" = "run" ]; then
+	cp "$boilerplates/txt/run" run
 else
 	cp -r "$boilerplates/$mode" "$name" || echo "Something went wrong"
 fi
