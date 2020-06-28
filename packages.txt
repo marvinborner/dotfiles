@@ -111,6 +111,7 @@ libffado
 libisoburn
 libnewt
 libnotify
+libreoffice-fresh
 libressl
 libtool
 libva-mesa-driver
