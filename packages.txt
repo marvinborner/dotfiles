@@ -231,6 +231,7 @@ thunderbird-i18n-de
 thunderbird-i18n-en-us
 tk
 tmate
+torbrowser-launcher
 transmission-gtk
 ttf-dejavu
 ttf-inconsolata

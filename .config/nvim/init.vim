@@ -166,8 +166,7 @@ autocmd TermOpen * startinsert
 nmap <Leader>a :!echo <c-r>% \| entr compile <c-r>% &<CR><CR>
 nmap <Leader>c :w! \| !compile <c-r>%<CR>
 nmap <Leader>p :!preview <c-r>%<CR><CR>
-nmap <Leader>r :w! \| !./run<CR>
-nmap <Leader>R :w! \| terminal<CR>./run<CR>
+nmap <Leader>r :w! \| terminal<CR>./run<CR>
 
 " FZF
 nmap ; :Files<CR>
