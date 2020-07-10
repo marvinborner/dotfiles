@@ -21,8 +21,8 @@ alias ..='cd ..'
 alias ...='cd ...'
 alias -- -='cd -'
 alias c='cd'
-alias mv='mv -v'
 alias cp='cp -v'
+alias mv='mv -v'
 alias cls='clear; ls'
 alias vim='nvim'
 alias v='nvim'
@@ -49,6 +49,7 @@ alias gp='setsid -f git push --quiet' # yeah..
 alias gd='git diff'
 alias gr='git reset'
 alias gl='git log'
+alias gm='git mv'
 
 # Functions
 disasm() { objdump -drwC -Mintel "$1" | less; }
@@ -61,8 +62,9 @@ export BROWSER='qutebrowser'
 export EDITOR='nvim'
 export TERM='st'
 export TERMINAL='st'
+export DENO_INSTALL="$HOME/.deno"
 export JAVA_HOME=/usr/lib/jvm/default
-export PATH=/bin:/usr/bin:/usr/local/sbin:/usr/local/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:$HOME/.scripts:$HOME/.sailfish/bin:$HOME/.gem/ruby/2.7.0/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/go/bin/:$JAVA_HOME:/opt/android-sdk/tools/bin:/opt/android-sdk/tools
+export PATH=/bin/:/usr/bin/:/usr/local/sbin/:/usr/local/bin/:/usr/bin/site_perl/:/usr/bin/vendor_perl/:/usr/bin/core_perl/:$HOME/.scripts/:$HOME/.sailfish/bin/:$HOME/.gem/ruby/2.7.0/bin/:$HOME/.cargo/bin/:$HOME/.local/bin/:$HOME/go/bin/:$JAVA_HOME:/opt/android-sdk/tools/bin:/opt/android-sdk/tools/:$DENO_INSTALL/bin/
 export ANDROID_SDK_ROOT=/opt/android-sdk
 export ANDROID_HOME=/opt/android-sdk
 export GITHUB_TOKEN="$(cat "$HOME"/.crypto/github)"

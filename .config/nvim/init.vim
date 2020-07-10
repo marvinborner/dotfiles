@@ -247,6 +247,7 @@ let g:ale_fixers = {
 \ 'markdown': ['prettier'],
 \ 'sh': ['shfmt'],
 \ 'tex': ['latexindent'],
+\ 'typescript': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
 autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'

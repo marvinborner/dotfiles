@@ -1,4 +1,5 @@
 /* See LICENSE file for copyright and license details. */
+// Sorry, I formatted this config by accident and don't want to fix it :P
 
 /* appearance */
 static const unsigned int borderpx = 3; /* border pixel of windows */
@@ -171,9 +172,10 @@ static Key keys[] = {
 	{ MODKEY, XK_l, setmfact, { .f = +0.05 } },
 	{ MODKEY, XK_semicolon, shiftview, { .i = 1 } },
 	{ MODKEY | ShiftMask, XK_semicolon, shifttag, { .i = 1 } },
-	{ MODKEY, XK_apostrophe, togglescratch, { .ui = 1 } },
 	{ MODKEY, XK_Return, spawn, { .v = termcmd } },
 	{ MODKEY | ShiftMask, XK_Return, togglescratch, { .ui = 0 } },
+	{ MODKEY, XK_apostrophe, togglescratch, { .ui = 1 } },
+	{ MODKEY | ShiftMask, XK_l, togglescratch, { .ui = 2 } },
 
 	{ MODKEY, XK_z, incrgaps, { .i = +3 } },
 	{ MODKEY, XK_x, incrgaps, { .i = -3 } },
