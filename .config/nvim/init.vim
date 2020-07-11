@@ -320,6 +320,13 @@ if &diff
 	highlight! link DiffText MatchParen
 endif
 
+" Custom indenting
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
+
 " File extension actions
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
 autocmd BufRead,BufNewFile *.asm set filetype=nasm
