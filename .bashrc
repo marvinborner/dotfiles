@@ -79,3 +79,16 @@ alias tree='rg --files'
 
 # Superuser customization
 [ "$(id -u)" == "0" ] && export PS1="\[\e[01;31m\]$PS1\[\e[00m\]"
+
+# nnn
+alias nnn='nnn -e'
+export NNN_ARCHIVE="\\.(7z|a|ace|alz|arc|arj|bz|bz2|cab|cpio|deb|gz|jar|lha|lz|lzh|lzma|lzo|rar|rpm|rz|t7z|tar|tbz|tbz2|tgz|tlz|txz|tZ|tzo|war|xpi|xz|Z|zip)$"
+n() {
+	if [ -n "$NNNLVL" ] && [ "${NNNLVL:-0}" -ge 1 ]; then return; fi
+	export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+	nnn "$@"
+	if [ -f "$NNN_TMPFILE" ]; then
+		. "$NNN_TMPFILE"
+		rm -f "$NNN_TMPFILE" >/dev/null
+	fi
+}

@@ -147,6 +147,7 @@ static Key keys[] = {
 	{ MODKEY, XK_q, killclient, { 0 } },
 	{ MODKEY | ShiftMask, XK_b, spawn, SHCMD("$BROWSER") },
 	{ MODKEY | ShiftMask, XK_r, spawn, SHCMD("st -e htop") },
+	{ MODKEY, XK_n, spawn, SHCMD("st -e n") },
 	{ MODKEY, XK_t, setlayout, { .v = &layouts[0] } }, /* tile */
 	{ MODKEY | ShiftMask, XK_t, setlayout, { .v = &layouts[1] } }, /* bstack */
 	{ MODKEY, XK_y, setlayout, { .v = &layouts[2] } }, /* spiral */
@@ -185,8 +186,8 @@ static Key keys[] = {
 	{ MODKEY, XK_space, zoom, { 0 } },
 	{ MODKEY | ShiftMask, XK_space, togglefloating, { 0 } },
 
-	{ 0, XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 15") },
-	{ 0, XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 15") },
+	{ 0, XF86XK_MonBrightnessUp, spawn, SHCMD("xbacklight -inc 5") },
+	{ 0, XF86XK_MonBrightnessDown, spawn, SHCMD("xbacklight -dec 5") },
 };
 
 /* button definitions */
