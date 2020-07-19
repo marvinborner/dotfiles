@@ -27,6 +27,7 @@ arduino-cli
 arduino-docs
 asciinema
 at-spi2-atk
+atom
 atool
 audacity
 autoconf
@@ -154,11 +155,13 @@ lowdown
 lshw
 lsscsi
 lutris
+lzip
 m4
 maim
 make
 man-db
 man-pages
+mariadb
 maven
 mediainfo
 mesa-vdpau
@@ -203,6 +206,7 @@ perl-proc-processtable
 phantomjs-bin
 php
 pkgconf
+postgresql
 prettier
 pulseaudio
 pulseaudio-alsa

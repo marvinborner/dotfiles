@@ -10,6 +10,8 @@ dunst &
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl -option "caps:swapescape"
 xmodmap -e "keycode 135 = Super_R"
 xset r rate 300 50
+xset s off
+xset -dpms
 
 # Interface
 xsetroot -solid "#282c34"

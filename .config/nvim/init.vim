@@ -35,6 +35,7 @@ Plug 'w0rp/ale'
 Plug 'peterhoeg/vim-qml'
 Plug 'dermusikman/sonicpi.vim'
 Plug 'sheerun/vim-polyglot'
+"Plug 'Jacotsu/CoVim-Neovim', {'branch': 'neovim'}
 "Plug 'ananagame/vimsence'
 
 " Menus
@@ -323,6 +324,7 @@ endif
 " Custom indenting
 autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType typescript set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
