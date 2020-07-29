@@ -288,7 +288,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " Airline config
 let g:airline_theme = 'onedark'
 let g:airline_extensions = ['tabline', 'tagbar', 'ale', 'term']
-let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = ''
@@ -300,7 +300,7 @@ let g:airline_section_z = '%3p%% (%l/%L)'
 let g:sonicpi_command = 'sonic-pi-tool'
 let g:sonicpi_send = 'eval-stdin'
 let g:sonicpi_stop = 'stop'
-let g:vim_redraw = 1
+let g:vim_redraw = 0
 
 " Colorscheme
 let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
@@ -328,6 +328,8 @@ autocmd FileType typescript set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType sh set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType c set tabstop=8|set shiftwidth=8|set noexpandtab
 
 " File extension actions
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
