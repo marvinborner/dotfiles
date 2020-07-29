@@ -36,10 +36,9 @@ base
 bash-completion
 bat
 bc
-bdf-spleen
 bdf2c
 biber
-bind-tools
+bind
 binutils
 bison
 bridge-utils
@@ -92,6 +91,7 @@ gst-plugins-base
 gst-plugins-good
 gst-plugins-ugly
 gtk-theme-arc-gruvbox-git
+gtkmm
 gutenprint
 hdparm
 heroku-cli
@@ -234,6 +234,7 @@ signal-desktop
 sonic-pi
 speedtest-cli
 spicetify-cli
+spleen-font
 spotify
 spotifywm-git
 strace
@@ -242,6 +243,7 @@ sudo
 sxiv
 tcc
 telegram-desktop
+terminus-font
 texinfo
 texlive-bibtexextra
 texlive-core
@@ -358,6 +360,7 @@ xorg-xvinfo
 xorg-xwd
 xorg-xwininfo
 xorg-xwud
+xournalpp
 xsel
 yapf
 yay
