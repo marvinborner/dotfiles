@@ -50,11 +50,13 @@ alias gd='git diff'
 alias gr='git reset'
 alias gl='git log'
 alias gm='git mv'
+alias gch='git checkout'
 
 # Functions
 hex() { hexdump -C "$1" | less; }
 disasm() { objdump -drwC -Mintel "$1" | less; }
 disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
+ports() { sudo lsof -i -P -n | grep LISTEN; }
 
 # Settings
 export PS1='[\W] '
