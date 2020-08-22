@@ -57,6 +57,7 @@ hex() { hexdump -C "$1" | less; }
 disasm() { objdump -drwC -Mintel "$1" | less; }
 disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
 ports() { sudo lsof -i -P -n | grep LISTEN; }
+com() { compgen -c | rg "$1"; }
 
 # Settings
 export PS1='[\W] '

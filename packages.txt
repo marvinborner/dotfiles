@@ -42,6 +42,10 @@ bind
 binutils
 binwalk
 bison
+bluez
+bluez-libs
+bluez-plugins
+bluez-utils
 bridge-utils
 cabextract
 ccache
@@ -59,7 +63,7 @@ cups
 cups-pdf
 cura
 dhcpcd
-discord
+discord-ptb
 dmidecode
 downgrade
 dpkg

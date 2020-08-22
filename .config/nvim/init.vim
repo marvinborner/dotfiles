@@ -330,6 +330,7 @@ autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType sh set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType c set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
 
 " File extension actions
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
