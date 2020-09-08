@@ -54,6 +54,7 @@ celt
 cheese
 chromium-widevine
 clang
+cloc
 clojure
 cmake
 cpio
@@ -86,10 +87,12 @@ fzf
 gcc
 gdb
 geckodriver
+gimp
 git
 gnu-free-fonts
 gnu-netcat
 gotop-bin
+gource
 groff
 grub
 gst-libav
