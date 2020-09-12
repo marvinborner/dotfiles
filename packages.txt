@@ -127,7 +127,6 @@ lib32-giflib
 lib32-glibc
 lib32-gnutls
 lib32-gst-plugins-base-libs
-lib32-gtk3
 lib32-libgcrypt
 lib32-libgpg-error
 lib32-libjpeg-turbo
@@ -157,8 +156,8 @@ libva-mesa-driver
 libva-vdpau-driver
 libvirt
 libxft-bgra
+linux
 linux-firmware
-linux-zen
 linux-zen-docs
 linux-zen-headers
 llvm
@@ -297,7 +296,6 @@ unrar
 unrtf
 unzip
 usbutils
-v4l2loopback-dkms
 valgrind
 vi
 vim
