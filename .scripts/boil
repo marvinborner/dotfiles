@@ -5,18 +5,23 @@ name="$2"
 boilerplates="$HOME/.boilerplates"
 
 if [ "${mode}" = "" ] || [ "${name}" = "" ]; then
-	echo "Not enough parameters"
-	exit 1
+    echo "Not enough parameters"
+    exit 1
 fi
 
 if [ "${mode}" = "clj" ]; then
-	lein new app "$name"
-	cp "$boilerplates/$mode/run" "$name"
-	rm -rf "$name/CHANGELOG.md" "$name/LICENSE" "$name/README.md" "$name/doc/"
+    lein new app "$name"
+    cp "$boilerplates/$mode/run" "$name"
+    rm -rf "$name/CHANGELOG.md" "$name/LICENSE" "$name/README.md" "$name/doc/"
 elif [ "${mode}" = "md" ] || [ "${mode}" = "ms" ]; then
-	cp "$boilerplates/txt/$mode.$mode" "$name.$mode"
+    cp "$boilerplates/txt/$mode.$mode" "$name.$mode"
 elif [ "${mode}" = "run" ]; then
-	cp "$boilerplates/txt/run" run
+    cp "$boilerplates/txt/run" run
+elif [ "${mode}" = "cs" ]; then
+    mkdir -p "$name"
+    cd "$name" || exit 1
+    dotnet new console
+    cp "$boilerplates/cs/run" run
 else
-	cp -r "$boilerplates/$mode" "$name" || echo "Something went wrong"
+    cp -r "$boilerplates/$mode" "$name" || echo "Something went wrong"
 fi

@@ -1,4 +1,3 @@
 #!/usr/bin/env sh
 
-mcs -out:Program.exe -pkg:dotnet ./*.cs
-mono Program.exe
+time dotnet run

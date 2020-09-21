@@ -5,13 +5,13 @@ if [ -z "$1" ]; then exit 1; fi
 basename="$(echo "$1" | sed 's/\.[^\/.]*$//')"
 
 wait_pdf() {
-	sleep 5 # Some start delay
-	while true; do
-		if ! pgrep -x "zathura" >/dev/null; then
-			rm -f "$basename".pdf
-			exit 0
-		fi
-	done
+    sleep 5 # Some start delay
+    while true; do
+        if ! pgrep -x "zathura" >/dev/null; then
+            rm -f "$basename".pdf
+            exit 0
+        fi
+    done
 }
 
 case "$1" in

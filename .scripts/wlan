@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Melvin's awesome wifi connection script!
+
+netctl list | grep -q "$1" || {
+    echo "This network doesn't exist. Please use 'sudo wifi-menu' to add a new network or use one of the following:"
+    netctl list
+    exit 1
+}
+
+sudo netctl stop-all
+sudo killall -9 dhcpcd
+sudo systemctl start dhcpcd || exit 1
+sudo ip link set wlp3s0 down
+sudo netctl start "$1" || exit 1
+
+echo "Connecting..."
+while ! ping -c1 1.1.1.1 &>/dev/null; do sleep 1; done
+echo "Connected!"

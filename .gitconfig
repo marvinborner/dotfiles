@@ -6,5 +6,3 @@
 	ff = only
 [commit]
 	gpgsign = true
-[merge]
-	tool = vimdiff

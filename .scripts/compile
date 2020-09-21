@@ -6,8 +6,8 @@ base="${file%.*}"
 ext="${file##*.}"
 
 if [ -f "$dir/run" ]; then
-	echo "Using run file"
-	exec "$dir/run"
+    echo "Using run file"
+    exec "$dir/run"
 fi
 
 case "$ext" in

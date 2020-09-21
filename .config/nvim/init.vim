@@ -238,7 +238,6 @@ let g:ale_fixers = {
 \ '*': ['remove_trailing_lines', 'trim_whitespace'],
 \ 'c': ['clang-format'],
 \ 'cpp': ['clang-format'],
-\ 'cs': ['uncrustify'],
 \ 'css': ['prettier'],
 \ 'd': ['uncrustify'],
 \ 'html': ['prettier'],
@@ -251,7 +250,7 @@ let g:ale_fixers = {
 \ 'typescript': ['prettier'],
 \}
 let g:ale_fix_on_save = 1
-autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'
+" autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'
 autocmd FileType java let g:ale_c_uncrustify_options = '-l JAVA'
 autocmd FileType d let g:ale_c_uncrustify_options = '-l D'
 
@@ -326,6 +325,7 @@ autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType typescript set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType cs set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
 autocmd FileType sh set tabstop=4|set shiftwidth=4|set expandtab
