@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -n "$1" ]; then
+    hueadm group 1 =0 &>/dev/null
+    hueadm group 1 on &>/dev/null
+    exit 0
+fi
+
+if [ "$(hueadm group -j 1 | jq .state.any_on)" = "true" ]; then
+    hueadm group 1 off &>/dev/null
+else
+    hueadm group 1 reset &>/dev/null
+fi

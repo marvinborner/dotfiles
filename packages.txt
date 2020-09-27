@@ -37,6 +37,7 @@ bash-completion
 bat
 bc
 bdf2c
+bdf2psf
 biber
 bind
 binutils
@@ -89,6 +90,7 @@ gdb
 geckodriver
 gimp
 git
+github-cli
 gnu-free-fonts
 gnu-netcat
 gotop-bin
@@ -206,6 +208,7 @@ odt2txt
 openssl-1.0
 otf-latin-modern
 otf-latinmodern-math
+otf2bdf
 pacman-contrib
 pandoc
 pandoc-citeproc
@@ -234,6 +237,7 @@ qutebrowser
 r
 rclone
 read-edid
+redshift
 ripgrep
 rpmextract
 rsync
@@ -254,6 +258,7 @@ stress
 sudo
 sxiv
 tcc
+tcpdump
 telegram-desktop
 terminus-font
 texinfo
@@ -313,6 +318,7 @@ windows2usb-git
 wine-gecko
 wine-mono
 wine-staging
+wireshark-qt
 wmctrl
 wmname
 wtf
