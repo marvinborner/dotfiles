@@ -67,6 +67,10 @@ cura
 dhcpcd
 discord-ptb
 dmidecode
+dotnet-host
+dotnet-runtime
+dotnet-sdk
+dotnet-targeting-pack
 downgrade
 dpkg
 dunst
