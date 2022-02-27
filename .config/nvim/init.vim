@@ -12,29 +12,36 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " Features
-Plug '907th/vim-auto-save'
+"Plug '907th/vim-auto-save'
+Plug 'AndrewRadev/tagalong.vim'
+Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'airblade/vim-gitgutter'
 Plug 'haya14busa/incsearch.vim'
 Plug 'qpkorr/vim-bufkill'
-Plug 'tpope/vim-unimpaired'
+"Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-salve'
-Plug 'tpope/vim-projectionist'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-fireplace'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'guns/vim-clojure-static'
-Plug 'guns/vim-clojure-highlight'
-Plug 'venantius/vim-cljfmt'
+"Plug 'tpope/vim-surround'
+"Plug 'tpope/vim-repeat'
+"Plug 'tpope/vim-salve'
+"Plug 'tpope/vim-projectionist'
+"Plug 'tpope/vim-dispatch'
+"Plug 'tpope/vim-fireplace'
+"Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-rhubarb'
+"Plug 'tpope/vim-abolish'
+"Plug 'guns/vim-clojure-static'
+"Plug 'guns/vim-clojure-highlight'
+"Plug 'venantius/vim-cljfmt'
 Plug 'w0rp/ale'
-Plug 'peterhoeg/vim-qml'
-Plug 'dermusikman/sonicpi.vim'
+"Plug 'takac/vim-hardtime'
+Plug 'matze/vim-move'
 Plug 'sheerun/vim-polyglot'
+Plug 'chaoren/vim-wordmotion'
+"Plug 'unblevable/quick-scope'
+"Plug 'peterhoeg/vim-qml'
+"Plug 'dermusikman/sonicpi.vim'
 "Plug 'Jacotsu/CoVim-Neovim', {'branch': 'neovim'}
 "Plug 'ananagame/vimsence'
 
@@ -42,15 +49,17 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/nerdtree'
 " Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'bling/vim-airline'
-Plug 'majutsushi/tagbar'
+"Plug 'majutsushi/tagbar'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Appearance
 "Plug 'flazz/vim-colorschemes'
 "Plug 'tomasiser/vim-code-dark'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+Plug 'lucasprag/simpleblack'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/rainbow_parentheses.vim'
+"Plug 'kien/rainbow_parentheses.vim'
 
 call plug#end()
 
@@ -71,6 +80,7 @@ set copyindent
 set encoding=utf-8
 set ff=unix
 set fileformats=unix,dos,mac
+set fillchars+=vert:\ 
 set formatoptions=tcqn1
 set go=a
 set hidden
@@ -83,7 +93,6 @@ set laststatus=2
 set linebreak
 set list
 set listchars=tab:\ \ ,extends:›,precedes:‹,nbsp:·,trail:·
-set matchtime=2
 set mouse=a
 set nobackup
 set nocompatible
@@ -102,7 +111,6 @@ set shiftround
 set shiftwidth=8
 set shortmess+=A
 set showbreak=
-set showmatch
 set showtabline=2
 set sidescrolloff=3
 set smartcase
@@ -119,6 +127,8 @@ set visualbell t_vb=
 set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules
 set wildmenu
 set wildmode=list:longest,full
+
+"let g:loaded_matchparen=1
 
 " Basic keymaps
 nmap j gj
@@ -147,8 +157,8 @@ autocmd BufWinLeave,BufLeave,BufWritePost ?* nested silent! mkview!
 autocmd BufWinEnter ?* silent! loadview
 
 " Tagbar
-nmap <Leader>T :TagbarToggle<CR>
-let g:tagbar_compact=1
+"nmap <Leader>T :TagbarToggle<CR>
+"let g:tagbar_compact=1
 
 " Splitting
 set splitbelow splitright
@@ -240,14 +250,17 @@ let g:ale_fixers = {
 \ 'cpp': ['clang-format'],
 \ 'css': ['prettier'],
 \ 'd': ['uncrustify'],
+\ 'haskell': ['brittany'],
 \ 'html': ['prettier'],
 \ 'java': ['uncrustify'],
 \ 'javascript': ['prettier'],
 \ 'json': ['jq'],
 \ 'markdown': ['prettier'],
+\ 'ocaml': ['ocamlformat'],
 \ 'sh': ['shfmt'],
 \ 'tex': ['latexindent'],
 \ 'typescript': ['prettier'],
+\ 'xml': ['xmllint'],
 \}
 let g:ale_fix_on_save = 1
 " autocmd FileType cs let g:ale_c_uncrustify_options = '-l CS'
@@ -276,6 +289,7 @@ let g:NERDTreeDirArrowCollapsible = ''
 let NERDTreeMinimalUI=1
 let NERDTreeIgnore=['node_modules', 'cross']
 let g:NERDTreeMarkBookmarks=0
+let g:NERDTreeWinSize=27
 let g:NERDTreeAutoDeleteBuffer=1
 let g:NERDTreeStatusLine=-1
 au BufEnter * if bufname('#') =~ 'NERD_tree' && bufname('%') !~ 'NERD_tree' && winnr('$') > 1 | b# | exe "normal! \<c-w>\<c-w>" | :blast | endif
@@ -285,28 +299,42 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 " Airline config
-let g:airline_theme = 'onedark'
-let g:airline_extensions = ['tabline', 'tagbar', 'ale', 'term']
+let g:airline_theme = 'monochrome'
+let g:airline_extensions = ['tabline', 'ale', 'term']
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline_powerline_fonts = 0
 let g:airline_section_b = ''
 let g:airline_section_x = ''
 let g:airline_section_y = ''
 let g:airline_section_z = '%3p%% (%l/%L)'
 
 " Sonic Pi
-let g:sonicpi_command = 'sonic-pi-tool'
-let g:sonicpi_send = 'eval-stdin'
-let g:sonicpi_stop = 'stop'
+"let g:sonicpi_command = 'sonic-pi-tool'
+"let g:sonicpi_send = 'eval-stdin'
+"let g:sonicpi_stop = 'stop'
 let g:vim_redraw = 0
 
 " Colorscheme
-let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
-colorscheme onedark
-"highlight GitGutterAdd guifg=#009900 ctermfg=2
-"highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-"highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+" colorscheme default
+colorscheme simpleblack
+let $NVIM_TUI_ENABLE_TRUE_COLOR = 0
+hi CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
+hi SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
+hi VertSplit guifg=fg guibg=bg cterm=NONE gui=NONE
+hi GitGutterAdd guifg=#009900 ctermfg=2
+hi GitGutterChange guifg=#bbbb00 ctermfg=3
+hi GitGutterDelete guifg=#ff2222 ctermfg=1
+
+" Emmet
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+autocmd FileType html,css imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+"let g:hardtime_default_on = 1
+"let g:hardtime_allow_different_key = 1
 
 " TODOs
 command Td :Rg! TODO
@@ -320,17 +348,25 @@ if &diff
 	highlight! link DiffText MatchParen
 endif
 
+" Position
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 " Custom indenting
-autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType typescript set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType cs set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType sh set tabstop=4|set shiftwidth=4|set expandtab
-autocmd FileType c set tabstop=8|set shiftwidth=8|set noexpandtab
 autocmd FileType asm set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType c set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType cs set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType css set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType haskell set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType html set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType json set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType latex set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType ocaml set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType markdown set tabstop=2|set shiftwidth=2|set expandtab
+autocmd FileType python set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType sh set tabstop=4|set shiftwidth=4|set expandtab
+autocmd FileType tex set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType typescript set tabstop=4|set shiftwidth=4|set expandtab
 
 " File extension actions
 autocmd BufRead,BufNewFile *.ms,*.me,*.mom,*.man set filetype=groff
