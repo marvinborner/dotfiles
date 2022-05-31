@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-
-mkdir -p build/ &&
-	xelatex --output-directory=build/ main &&
-	biber --input-directory=build/ main &&
-	xelatex --output-directory=build/ main &&
-	zathura build/main.pdf

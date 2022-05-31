@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-notify-send -i raindrop -t 10000 "Loading radar..."
-
-mpv --no-resume-playback --loop-file=inf "https://www.dwd.de/DWD/wetter/radar/radfilm_brd_akt.gif" &
-mpv --no-resume-playback --loop-file=inf "https://www.dwd.de/DWD/wetter/radar/radfilm_baw_akt.gif"

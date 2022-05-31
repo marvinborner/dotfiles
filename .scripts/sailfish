@@ -1,6 +1,0 @@
-#!/usr/bin/env sh
-
-export TERM=xterm
-sudo ifconfig enp1s0f0u2 inet 192.168.2.14
-ssh nemo@192.168.2.15
-export TERM=st
