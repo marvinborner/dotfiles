@@ -1,0 +1,3 @@
+#!/bin/sh
+
+maim -us | clip image/png

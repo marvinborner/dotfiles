@@ -1,0 +1,64 @@
+#!/bin/bash
+
+WEATHER_CACHE_DIR="/home/melvin/.cache/weather"
+CACHEFILE=$WEATHER_CACHE_DIR"/current_weather.png"
+CACHE_ONELINE=$WEATHER_CACHE_DIR"/current_weather_oneline.txt"
+TIME=""
+OPTION=$2
+
+usage () {
+  echo "Usage: $0 (help|update|show|get|reload|full|dark|text) [:help|p|q]"
+  echo "  help    :   show this page
+  show    :   show picture according to time
+  get     :   get image from wttr.in
+  reload  :   get and show
+  full    :   curl wttr.in [:help|p|q]
+  text    :   print one line text
+  clear   :   clear text cache
+  example: weather f 'Kitchener_0pq'
+           weather f moon
+" >&2
+  exit 0
+}
+
+onlyprinttext() {
+  info=$(cat $CACHE_ONELINE)
+  case $info in 
+    *DOCTYPE*) echo " n/a";;
+    *)  echo $info ;;
+  esac
+}
+
+get_image() {
+  hasnet || exit 1
+  curl -s 'wttr.in/Tübingen_1pq.png' > $CACHEFILE
+  curl -s 'wttr.in/?format=%t' > $CACHE_ONELINE
+}
+
+print_detail() {
+  echo curl -s "wttr.in/"$OPTION
+  curl -s "wttr.in"/$OPTION
+}
+
+show_image() {
+  if [ ! -e $CACHEFILE ]; then
+    get_image
+  fi
+
+  n30f -t weather $CACHEFILE
+}
+
+# main
+if [ ! -d $WEATHER_CACHE_DIR ]; then
+  mkdir $WEATHER_CACHE_DIR
+  get_image
+fi
+case "$1" in 
+  h|-h*|--h*)    usage ;;
+  show|s)        show_image ;;
+  get|g)         get_image ;;
+  reload|r)      get_image && show_image ;;
+  full|f)        print_detail; OPTION=$2;;
+  text|t)        onlyprinttext;;
+  *)             onlyprinttext; usage;;
+esac

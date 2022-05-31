@@ -1,0 +1,31 @@
+[global]
+monitor = 0
+follow = keyboard
+width = 370
+height = 350
+offset = 0x19
+padding = 2
+horizontal_padding = 2
+font = Monospace 15
+format = "<b>%s</b>\n%b"
+
+[urgency_low]
+foreground = "#bbbbbb"
+background = "#222222"
+frame_color = "#005577"
+timeout = 3
+
+[urgency_normal]
+foreground = "#eeeeee"
+background = "#005577"
+frame_color = "#005577"
+timeout = 5
+
+[urgency_critical]
+background = "#00ff00"
+foreground = "#000"
+frame_color = "#ff0000"
+timeout = 10
+
+[play_sound]
+script = ~/.scripts/beep

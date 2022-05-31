@@ -1,0 +1,6 @@
+#!/bin/sh
+
+time=$(printf "\\n" | dmenu -p "How many minutes?")
+echo "sleeping for ${time}min"
+sleep $((time * 60))
+notify-send "Timer" "${time}min are up!"

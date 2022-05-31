@@ -1,0 +1,23 @@
+[Default Applications]
+x-scheme-handler/tg=userapp-Telegram Desktop-6443J1.desktop
+x-scheme-handler/mailto=mail.desktop
+image/png=img.desktop
+image/jpeg=img.desktop
+image/gif=img.desktop
+video/x-matroska=video.desktop
+text/english=text.desktop
+text/html=firefox.desktop
+text/plain=text.desktop
+text/x-c=text.desktop
+text/x-c++=text.desktop
+text/x-c++hdr=text.desktop
+text/x-c++src=text.desktop
+text/x-chdr=text.desktop
+text/x-csrc=text.desktop
+text/x-java=text.desktop
+text/x-makefile=text.desktop
+text/x-moc=text.desktop
+text/x-pascal=text.desktop
+text/x-tcl=text.desktop
+text/x-tex=text.desktop
+text/xml=firefox.desktop

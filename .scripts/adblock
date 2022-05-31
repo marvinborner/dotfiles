@@ -1,0 +1,10 @@
+#!/bin/bash
+
+if grep -Fxq "##START" /etc/hosts
+then
+	sudo sed -i "/##START/,/##END/s/#\(.\)/\1/" /etc/hosts
+	echo Enabled adblock!
+else
+	sudo sed -i "/#START/,/#END/s/./#&/" /etc/hosts
+	echo Disabled adblock!
+fi

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+(amixer get Speaker | grep "off" &>/dev/null) || exit 0 # only beep on headphones
+paplay $HOME/.scripts/beep.ogg &

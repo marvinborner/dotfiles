@@ -1,0 +1,10 @@
+#!/bin/sh
+
+net="$(hasnet && echo up || echo down)"
+temp="$(awk '{print $2 "°C"}' /proc/acpi/ibm/thermal)"
+battery="$(cat /sys/class/power_supply/BAT0/capacity)%"
+charging="$(awk '{print $1*10^-6 "W"}' /sys/class/power_supply/BAT0/power_now)"
+time=$(date +'%d.%m | %H:%M')
+weather=$(weather text)
+
+echo "$battery ($charging) | $temp | $net | $weather | $time"

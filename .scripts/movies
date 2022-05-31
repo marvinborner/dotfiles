@@ -1,0 +1,16 @@
+#!/bin/env bash
+#ssh server ls /mnt/Movies | dmenu | xargs -i -exec mpv "sftp://server:/mnt/Movies/{}"
+
+watch() {
+	echo "Watch with $1"
+	path="$1/$(ssh server ls -p \"$1\" | dmenu)"
+	if [[ "$path" =~ '/'$ ]]; then
+		watch "$path"
+	elif [[ "$path" =~ 'list'$ ]]; then
+		mpv --playlist=sftp://server:"$path"
+	else
+		mpv sftp://server:"$path"
+	fi
+}
+
+watch /mnt/Movies

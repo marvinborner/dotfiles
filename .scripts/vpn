@@ -1,0 +1,32 @@
+#!/bin/env bash
+
+set -e
+
+if [ "$EUID" -eq 0 ]; then
+	echo "Don't use sudo/root pls"
+	exit
+fi
+
+if ! wg &>/dev/null; then
+	wg-quick down wg0
+	echo "Disconnected from Wireguard!"
+	exit
+fi
+
+if sudo pppstats &>/dev/null; then
+	sudo poff uni-tuebingen
+	echo "Disconnected from Tübingen!"
+	exit
+fi
+
+read -p "[T]uebingen or [W]ireguard? " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Tt]$ ]]; then
+	sudo pon uni-tuebingen
+	echo "Connected to Tübingen!"
+	exit
+elif [[ $REPLY =~ ^[Ww]$ ]]; then
+	wg-quick up wg0
+	echo "Connected to Wireguard!"
+	exit
+fi

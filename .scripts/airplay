@@ -1,0 +1,8 @@
+#!/bin/env sh
+
+sudo systemctl start avahi-daemon
+sudo systemctl stop ufw
+sleep 1
+uxplay
+sudo systemctl start ufw
+sudo systemctl stop avahi-daemon
