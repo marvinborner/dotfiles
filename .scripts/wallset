@@ -1,0 +1,3 @@
+#!/bin/bash
+
+hsetroot -cover $HOME/.scripts/wall.png

@@ -9,6 +9,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 "Plug 'vimwiki/vimwiki'
+Plug 'airblade/vim-gitgutter'
 Plug 'matze/vim-move'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -16,6 +17,14 @@ Plug 'lucasprag/simpleblack'
 call plug#end()
 
 silent! source $VIMRUNTIME/defaults.vim
+
+" fix alt key on alacritty
+"let c='a'
+"while c <= 'z'
+"  exec "set <A-".c.">=\e".c
+"  exec "imap \e".c." <A-".c.">"
+"  let c = nr2char(1+char2nr(c))
+"endw
 
 syntax on
 colorscheme simpleblack
@@ -26,6 +35,7 @@ set noruler
 set notitle
 set go=a
 set mouse=a
+set ttymouse=sgr
 set autoindent
 set autoread
 set backspace=indent,eol,start
@@ -98,6 +108,26 @@ nnoremap <silent> <Leader>ww :w<CR>
 
 call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'markdown'})
 call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'markdown'})
+call lexima#add_rule({'char': '*', 'input_after': '*', 'filetype': 'markdown'})
+call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': 'markdown'})
+call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'tex'})
+call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'tex'})
+call lexima#add_rule({
+\ 'filetype': 'tex',
+\ 'char': '<CR>',
+\ 'input': '<CR>',
+\ 'input_after': '<CR>\\end{\1}',
+\ 'at': '^.*\\begin{\([^}]*\)}\(\[.*\]\)*\%#$',
+\ 'with_submatch': 1,
+\ })
+call lexima#add_rule({
+\ 'filetype': 'markdown',
+\ 'char': '<CR>',
+\ 'input': '<CR>',
+\ 'input_after': '<CR>\\end{\1}',
+\ 'at': '^.*\\begin{\([^}]*\)}\(\[.*\]\)*\%#$',
+\ 'with_submatch': 1,
+\ })
 
 nnoremap S :%s//g<Left><Left>
 nnoremap d "_d
@@ -115,11 +145,21 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 let g:vimwiki_list = [{'path': '~/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 
+set signcolumn=no
+nmap ghs <Plug>(GitGutterStageHunk)
+nmap ghu <Plug>(GitGutterUndoHunk)
+nmap ghp <Plug>(GitGutterPreviewHunk)
+let g:gitgutter_signs=1
+let g:gitgutter_highlight_lines=1
+let g:gitgutter_map_keys=0
+autocmd VimEnter * GitGutterLineHighlightsEnable
+
 let g:ale_fix_on_save = 1
 let g:ale_set_signs = 0
 let g:ale_fixers = {}
 let g:ale_fixers.haskell = ['brittany']
 let g:ale_fixers.c = ['clang-format']
+let g:ale_fixers.cpp = ['clang-format']
 let g:ale_fixers.sh = ['shfmt']
 let g:ale_fixers.markdown = ['pandoc']
 let g:ale_fixers.javascript = ['xo']
@@ -136,6 +176,9 @@ highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
 highlight TabLine cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
 highlight TabLineFill cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
 highlight ALEError ctermbg=none cterm=underline
+highlight GitGutterChangeLine cterm=italic ctermbg=NONE
+highlight GitGutterAddLine cterm=bold ctermbg=NONE
+highlight GitGutterDeleteLine cterm=underline guisp=red
 highlight clear SignColumn
 
 autocmd FileType c set tabstop=8|set shiftwidth=8|set noexpandtab

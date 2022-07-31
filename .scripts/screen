@@ -55,6 +55,7 @@ onescreen() { # If only one output available or chosen.
 postrun() { # Stuff to run to clean up.
 	{ killall -9 dunst ; setsid -f dunst ;} >/dev/null 2>&1 # Restart dunst to ensure proper location on screen
 	inputset # Refresh input remaps/settings
+	wallset # refresh wallpaper
 }
 
 # Get all possible displays

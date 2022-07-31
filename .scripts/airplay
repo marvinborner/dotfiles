@@ -1,8 +1,6 @@
 #!/bin/env sh
 
 sudo systemctl start avahi-daemon
-sudo systemctl stop ufw
 sleep 1
-uxplay
-sudo systemctl start ufw
+uxplay -n melvin -nh -p
 sudo systemctl stop avahi-daemon

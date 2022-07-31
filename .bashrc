@@ -1,24 +1,26 @@
 export CC=gcc
 export EDITOR=vim
 export VISUAL=$EDITOR
-export TERM=st
+export TERM=alacritty
 export TERMINAL=$TERM
 export PAGER=less
 export BROWSER=firefox
 export SSH_ASKPASS=ssh-askpass
-export PS1='[\W] '
+export PS1='\[\e]0;\us terminal\a\][\W] '
 
 export LC_CTYPE="en_US.UTF-8"
 
 export HISTFILE=$HOME/.history
 export HISTSIZE=1000000
 export HISTFILESIZE=1000000
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=ignoredups:erasedups:ignorespace
 
 export LESS='-iMRS -x8'
 export CLICOLOR=1
 
 export UNCRUSTIFY_CONFIG=$HOME/.uncrustify.cfg
+
+export ASAN_OPTIONS=verify_asan_link_order=0
 
 umask 027
 
@@ -39,8 +41,11 @@ alias gm='git mv'
 alias gch='git checkout'
 
 set -o noclobber # no > misuse; >| instead
-set -o nounset
+#set -o nounset
 set -o notify
 set -o vi
-set -o viraw
-set -o posix
+
+stty susp undef
+bind -x '"\C-z":"fg"'
+
+. ~/.scripts/z.sh

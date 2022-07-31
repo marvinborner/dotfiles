@@ -5,6 +5,8 @@ export TERM=mlterm
 export TERMINAL=$TERM
 export BROWSER=firefox
 
+export WINIT_X11_SCALE_FACTOR=1
+
 export PATH=$PATH:/home/melvin/.scripts:/home/melvin/.local/bin
 export npm_config_prefix="$HOME/.local"
 export LD_PRELOAD=/usr/lib/qt/qt5noblink.so

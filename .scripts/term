@@ -1,0 +1,10 @@
+#!/bin/bash
+# current terminal
+
+if [[ "$*" == *"-t"* ]]; then
+	EXTRA="--working-directory=$HOME" # idk
+else
+	EXTRA="-tMelvins terminal"
+fi
+
+alacritty msg create-window "${EXTRA}" $@

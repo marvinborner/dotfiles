@@ -13,10 +13,21 @@ unset f
 
 copyq &
 redshift -l 48.5:9.1 &
+touchegg &
+
+xset s 1200
+xset dpms 1200 1200 1200
 xss-lock -- slock &
+
+#picom &
+wallset &
 
 wmname LG3D
 xrdb ~/.Xresources
 
-obsidian &
+alacritty &
+sleep 0.5
+xdotool search --onlyvisible --class Alacritty windowunmap %@
+
+#obsidian &
 dbus-run-session dwm

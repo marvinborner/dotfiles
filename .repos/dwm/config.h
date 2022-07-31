@@ -22,14 +22,14 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"mlterm", "-T", "spterm", "-g", "120x34", NULL };
-const char *spcmd2[] = {"mlterm", "-T", "spcalc", "-e", "python3", "-q", NULL };
+const char *spcmd1[] = {"term", "-t", "spterm", NULL };
+const char *spcmd2[] = {"term", "-t", "spcalc", "-e", "python3", "-q", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
-const char *spcmd4[] = {"mlterm", "-T", "mail", "-g", "150x40", "-e", "neomutt", NULL };
-const char *spcmd5[] = {"/home/melvin/.scripts/weather", "show", NULL };
-const char *spcmd6[] = {"mlterm", "-T", "spalsa", "-e", "alsamixer", NULL };
-const char *spcmd7[] = {"mlterm", "-T", "spcale", "-e", "calcurse", NULL };
-const char *spcmd8[] = {"mlterm", "-T", "sptop", "-e", "htop", NULL };
+const char *spcmd4[] = {"term", "-t", "mail", "-e", "neomutt", NULL };
+const char *spcmd5[] = {"weather", "show", NULL };
+const char *spcmd6[] = {"term", "-t", "spalsa", "-e", "alsamixer", NULL };
+const char *spcmd7[] = {"term", "-t", "spcale", "-e", "calcurse", NULL };
+const char *spcmd8[] = {"term", "-t", "sptop", "-e", "htop", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -69,8 +69,8 @@ static const int lockfullscreen = 1;    /* 1 will force focus on the fullscreen 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[T]",      tile },    /* first entry is default */
-	{ "[F]",      NULL },    /* no layout function means floating behavior */
 	{ "[M]",      monocle },
+	{ "[F]",      NULL },    /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -87,7 +87,7 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "mlterm", NULL };
+static const char *termcmd[]  = { "term", NULL };
 
 #include <X11/XF86keysym.h>
 static Key keys[] = {
@@ -101,12 +101,16 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
+	{ MODKEY,                       XK_semicolon,viewnext,     {0} },
+	{ MODKEY,                       XK_g,      viewprev,       {0} },
+	/* { MODKEY|ShiftMask,             XK_Right,  tagtonext,      {0} }, */
+	/* { MODKEY|ShiftMask,             XK_Left,   tagtoprev,      {0} }, */
 	{ MODKEY|ShiftMask,             XK_j,      zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
-	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
+	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
+	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
@@ -134,6 +138,8 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 
+	{ MODKEY,                       XK_e,      spawn,          SHCMD("emoji") },
+
 	{ 0,                            XF86XK_AudioMute,         spawn, SHCMD("amixer set Master toggle") },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn, SHCMD("amixer set Master 5%+") },
 	{ 0,                            XF86XK_AudioLowerVolume,  spawn, SHCMD("amixer set Master 5%-") },
@@ -151,7 +157,7 @@ static Key keys[] = {
 static Button buttons[] = {
 	/* click                event mask      button          function        argument */
 	{ ClkLtSymbol,          0,              Button1,        setlayout,      {0} },
-	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
+	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[1]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
