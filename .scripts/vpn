@@ -8,25 +8,29 @@ if [ "$EUID" -eq 0 ]; then
 fi
 
 if ! wg &>/dev/null; then
-	wg-quick down wg0
+	wg-quick down wg0 || wg-quick down wg1
 	echo "Disconnected from Wireguard!"
 	exit
 fi
 
 if sudo pppstats &>/dev/null; then
-	sudo poff uni-tuebingen
-	echo "Disconnected from Tübingen!"
+	sudo poff uni
+	echo "Disconnected from Universität Tübingen!"
 	exit
 fi
 
-read -p "[T]uebingen or [W]ireguard? " -n 1 -r
+read -p "[U]ni, [T]übingen or [L]angenau? " -n 1 -r
 echo
-if [[ $REPLY =~ ^[Tt]$ ]]; then
-	sudo pon uni-tuebingen
-	echo "Connected to Tübingen!"
+if [[ $REPLY =~ ^[Uu]$ ]]; then
+	sudo pon uni
+	echo "Connected to Universität Tübingen!"
 	exit
-elif [[ $REPLY =~ ^[Ww]$ ]]; then
+elif [[ $REPLY =~ ^[Ll]$ ]]; then
 	wg-quick up wg0
-	echo "Connected to Wireguard!"
+	echo "Connected to Langenau Eaglefit!"
+	exit
+elif [[ $REPLY =~ ^[Tt]$ ]]; then
+	wg-quick up wg1
+	echo "Connected to Tübingen home!"
 	exit
 fi

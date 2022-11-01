@@ -1,3 +1,5 @@
-#!/bin/sh
+#!/bin/bash
 
-maim -us | clip image/png
+# maim -us | clip image/png
+killall -9 flameshot
+(flameshot &) && (sleep 0.5s && flameshot gui)

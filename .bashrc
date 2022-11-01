@@ -28,6 +28,9 @@ alias ls='ls --color=auto'
 alias vi='vim'
 alias v='vim'
 alias zat='setsid -f zathura'
+alias mtoot='madonctl -i chaos.social toot'
+alias toot='vipe | mtoot --stdin'
+alias npm="node --dns-result-order=ipv4first $(which npm)"
 
 alias gi='git init'
 alias gs='git status'
@@ -47,5 +50,32 @@ set -o vi
 
 stty susp undef
 bind -x '"\C-z":"fg"'
+
+f() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+			--phony -q "$1" \
+			--bind "change:reload:$RG_PREFIX {q}" \
+			--preview-window="70%:wrap"
+	)" &&
+		echo "opening $file" &&
+		xdg-open "$file"
+}
+
+k() {
+	local pid=$(ps -ef | sed 1d | eval "fzf ${FZF_DEFAULT_OPTS} -m --header='[kill:process]'" | awk '{print $2}')
+
+	if [ "x$pid" != "x" ]; then
+		echo $pid | xargs kill -${1:-9}
+		k
+	fi
+}
+
+e() {
+	$EDITOR $(rg --files | fzf)
+}
 
 . ~/.scripts/z.sh

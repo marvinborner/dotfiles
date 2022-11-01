@@ -30,6 +30,7 @@ const char *spcmd5[] = {"weather", "show", NULL };
 const char *spcmd6[] = {"term", "-t", "spalsa", "-e", "alsamixer", NULL };
 const char *spcmd7[] = {"term", "-t", "spcale", "-e", "calcurse", NULL };
 const char *spcmd8[] = {"term", "-t", "sptop", "-e", "htop", NULL };
+const char *spcmd9[] = {"term", "-t", "spnode", "-e", "node", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm",      spcmd1},
@@ -40,6 +41,7 @@ static Sp scratchpads[] = {
 	{"spalsa",      spcmd6},
 	{"spcale",      spcmd7},
 	{"sptop",       spcmd8},
+	{"spnode",      spcmd9},
 };
 
 /* tagging */
@@ -58,6 +60,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "spalsa",   SPTAG(5),         1,         -1 },
 	{ NULL,       NULL,       "spcale",   SPTAG(6),         1,         -1 },
 	{ NULL,       NULL,       "sptop",    SPTAG(7),         1,         -1 },
+	{ NULL,       NULL,       "spnode",   SPTAG(8),         1,         -1 },
 };
 
 /* layout(s) */
@@ -93,6 +96,7 @@ static const char *termcmd[]  = { "term", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("scrot") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -127,6 +131,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.ui = 5 } },
 	{ MODKEY|ShiftMask,             XK_c,      togglescratch,  {.ui = 6 } },
 	{ MODKEY|ShiftMask,             XK_h,      togglescratch,  {.ui = 7 } },
+	{ MODKEY|ShiftMask,             XK_apostrophe,togglescratch,{.ui = 8} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -144,9 +149,9 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn, SHCMD("amixer set Master 5%+") },
 	{ 0,                            XF86XK_AudioLowerVolume,  spawn, SHCMD("amixer set Master 5%-") },
 	{ 0,                            XF86XK_AudioMicMute,      spawn, SHCMD("amixer set Capture toggle") },
-	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl s 50-") },
-	{ 0,                            XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl s 50+") },
-	{ 0,                            XF86XK_WLAN,              spawn, SHCMD("wifi toggle") },
+	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl s 20-") },
+	{ 0,                            XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl s 20+") },
+	{ 0,                            XF86XK_WLAN,              spawn, SHCMD("wifi off") },
 	//{ 0,                            XF86XK_WakeUp,            spawn, SHCMD("scrot") },
 	{ 0,                            XF86XK_Display,           spawn, SHCMD("screen") },
 	{ 0,                            XF86XK_Favorites,         spawn, SHCMD("slock") },

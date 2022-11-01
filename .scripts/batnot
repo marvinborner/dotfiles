@@ -1,0 +1,13 @@
+#!/bin/bash
+
+bat=$(cat /sys/class/power_supply/BAT0/capacity)
+state=$(cat /sys/class/power_supply/BAT0/status)
+
+if [ "$bat" -le 7 ] && [ "$state" != "Charging" ]; then
+	export XAUTHORITY=/home/melvin/.Xauthority
+	export DISPLAY=:0
+	export XDG_RUNTIME_DIR=/run/user/1000
+	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+	notify-send -u critical "Battery low" "Battery level is at $bat%!"
+fi

@@ -1,3 +1,5 @@
 #!/bin/bash
 
-hsetroot -cover $HOME/.scripts/wall.png
+random=$(find $HOME/.walls -maxdepth 1 -name "k*" -type f | shuf -n 1)
+echo $random
+hsetroot -cover "$random"

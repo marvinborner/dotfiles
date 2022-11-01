@@ -1,0 +1,13 @@
+#!/bin/sh
+
+flat=$(curl "https://tl1host.eu/SWTUE/ajax/privroom/search?languageId=1&s_Group=T%C3%BCbingen&s_Einzugsbereich=-1&s_ZimmerArt=3&s_Mietobergrenze=500&s_AnzahlZimmer=1" | jq length)
+apt=$(curl "https://tl1host.eu/SWTUE/ajax/privroom/search?languageId=1&s_Group=T%C3%BCbingen&s_Einzugsbereich=-1&s_ZimmerArt=2&s_Mietobergrenze=500&s_AnzahlZimmer=1" | jq length)
+
+if [ $flat -ne 0 ] || [ $apt -ne 0 ]; then
+	export XAUTHORITY=/home/melvin/.Xauthority
+	export DISPLAY=:0
+	export XDG_RUNTIME_DIR=/run/user/1000
+	export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+	notify-send -u critical "Interessante StuWe Wohnung!" "tl1host/#privateroom"
+fi
