@@ -43,6 +43,9 @@ alias gl='git log'
 alias gm='git mv'
 alias gch='git checkout'
 
+disasm() { objdump -drwC -Mintel "$1" | less; }
+disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
+
 set -o noclobber # no > misuse; >| instead
 #set -o nounset
 set -o notify
