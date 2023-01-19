@@ -3,6 +3,11 @@ let mapleader=" "
 
 call plug#begin()
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-line'
 Plug 'cohama/lexima.vim'
 Plug 'dense-analysis/ale'
 Plug 'sheerun/vim-polyglot'
@@ -13,6 +18,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'matze/vim-move'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
+Plug 'eapache/rainbow_parentheses.vim'
 Plug 'lucasprag/simpleblack'
 call plug#end()
 
@@ -44,6 +50,7 @@ set history=10000
 set encoding=utf-8
 set hlsearch
 set incsearch
+set backupdir=/tmp
 set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
@@ -82,15 +89,13 @@ set pumheight=20
 set winminheight=0
 set wildmode=list:longest,full
 set listchars=tab:→\ ,eol:↵,trail:·,extends:↷,precedes:↶
-set fillchars=stl:\ ,stlnc:\ ,fold:\ ,vert:│
+set fillchars=stl:\ ,stlnc:\ ,fold:\ ,vert:│ 
 set whichwrap+=<,>,h,l
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
-set nobackup
 set noswapfile
-set nowritebackup
 
 autocmd FileType * hi LineNr ctermfg=darkgrey
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
@@ -108,8 +113,8 @@ nnoremap <silent> <Leader>ww :w<CR>
 
 call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'markdown'})
 call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'markdown'})
-call lexima#add_rule({'char': '*', 'input_after': '*', 'filetype': 'markdown'})
-call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': 'markdown'})
+"call lexima#add_rule({'char': '*', 'input_after': '*', 'filetype': 'markdown'})
+"call lexima#add_rule({'char': '<BS>', 'at': '\*\%#\*', 'delete': 1, 'filetype': 'markdown'})
 call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'tex'})
 call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'tex'})
 call lexima#add_rule({
@@ -143,7 +148,7 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-let g:vimwiki_list = [{'path': '~/notes/', 'syntax': 'markdown', 'ext': '.md'}]
+" let g:vimwiki_list = [{'path': '~/notes/', 'syntax': 'markdown', 'ext': '.md'}]
 
 set signcolumn=no
 nmap ghs <Plug>(GitGutterStageHunk)
@@ -165,11 +170,19 @@ let g:ale_fixers.markdown = ['pandoc']
 let g:ale_fixers.javascript = ['xo']
 let g:ale_fixers.java = ['google_java_format']
 let g:ale_fixers.tex = ['latexindent']
+let g:ale_fixers.python = ['black']
+let g:ale_fixers.r = ['styler']
 let g:ale_linters = {}
 let g:ale_linters.sh = ['shellcheck']
 let g:ale_linters.javascript = ['xo']
+let g:ale_linters.r = ['lintr']
+let g:ale_linters.python = ['pycodestyle']
 
 let g:ale_markdown_pandoc_options = '-s -f markdown+yaml_metadata_block -t markdown -'
+let g:ale_virtualtext_cursor = 'disabled'
+
+au Syntax * RainbowParenthesesLoadSquare
+au VimEnter * RainbowParenthesesActivate
 
 highlight CursorLine cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
 highlight SignColumn cterm=NONE ctermbg=NONE ctermfg=NONE guifg=NONE guibg=NONE
@@ -188,3 +201,4 @@ autocmd FileType java set tabstop=2|set shiftwidth=2|set expandtab
 autocmd FileType js set tabstop=2|set shiftwidth=2|set expandtab
 autocmd FileType r set tabstop=2|set shiftwidth=2|set expandtab
 autocmd FileType tex set tabstop=8|set shiftwidth=8|set noexpandtab
+autocmd FileType bruijn set tabstop=4|set shiftwidth=4|set noexpandtab

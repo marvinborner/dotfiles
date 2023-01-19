@@ -22,7 +22,8 @@ typedef struct {
 	const char *name;
 	const void *cmd;
 } Sp;
-const char *spcmd1[] = {"term", "-t", "spterm", NULL };
+const char *spcmd0[] = {"term", "-t", "spterm1", NULL };
+const char *spcmd1[] = {"term", "-t", "spterm2", NULL };
 const char *spcmd2[] = {"term", "-t", "spcalc", "-e", "python3", "-q", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 const char *spcmd4[] = {"term", "-t", "mail", "-e", "neomutt", NULL };
@@ -31,9 +32,11 @@ const char *spcmd6[] = {"term", "-t", "spalsa", "-e", "alsamixer", NULL };
 const char *spcmd7[] = {"term", "-t", "spcale", "-e", "calcurse", NULL };
 const char *spcmd8[] = {"term", "-t", "sptop", "-e", "htop", NULL };
 const char *spcmd9[] = {"term", "-t", "spnode", "-e", "node", NULL };
+const char *spcmd10[] = {"term", "-t", "vimterm", "-e", "vim", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
-	{"spterm",      spcmd1},
+	{"spterm1",     spcmd0},
+	{"spterm2",     spcmd1},
 	{"spcalc",      spcmd2},
 	{"keepassxc",   spcmd3},
 	{"mail",        spcmd4},
@@ -42,6 +45,7 @@ static Sp scratchpads[] = {
 	{"spcale",      spcmd7},
 	{"sptop",       spcmd8},
 	{"spnode",      spcmd9},
+	{"vimterm",     spcmd10},
 };
 
 /* tagging */
@@ -52,15 +56,17 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ NULL,       NULL,       "spterm",   SPTAG(0),         1,         -1 },
-	{ NULL,       NULL,       "spcalc",   SPTAG(1),         1,         -1 },
-	{ NULL,       "keepassxc",NULL,       SPTAG(2),         1,         -1 },
-	{ NULL,       NULL,       "mail",     SPTAG(3),         1,         -1 },
-	{ NULL,       NULL,       "weather",  SPTAG(4),         1,         -1 },
-	{ NULL,       NULL,       "spalsa",   SPTAG(5),         1,         -1 },
-	{ NULL,       NULL,       "spcale",   SPTAG(6),         1,         -1 },
-	{ NULL,       NULL,       "sptop",    SPTAG(7),         1,         -1 },
-	{ NULL,       NULL,       "spnode",   SPTAG(8),         1,         -1 },
+	{ NULL,       NULL,       "spterm1",  SPTAG(0),         1,         -1 },
+	{ NULL,       NULL,       "spterm2",  SPTAG(1),         1,         -1 },
+	{ NULL,       NULL,       "spcalc",   SPTAG(2),         1,         -1 },
+	{ NULL,       "keepassxc",NULL,       SPTAG(3),         1,         -1 },
+	{ NULL,       NULL,       "mail",     SPTAG(4),         1,         -1 },
+	{ NULL,       NULL,       "weather",  SPTAG(5),         1,         -1 },
+	{ NULL,       NULL,       "spalsa",   SPTAG(6),         1,         -1 },
+	{ NULL,       NULL,       "spcale",   SPTAG(7),         1,         -1 },
+	{ NULL,       NULL,       "sptop",    SPTAG(8),         1,         -1 },
+	{ NULL,       NULL,       "spnode",   SPTAG(9),         1,         -1 },
+	{ NULL,       NULL,       "vimterm",  SPTAG(10),        1,         -1 },
 };
 
 /* layout(s) */
@@ -124,14 +130,16 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_Return, togglescratch,  {.ui = 0 } },
-	{ MODKEY,                       XK_apostrophe,togglescratch,{.ui = 1} },
-	{ MODKEY|ShiftMask,             XK_l,      togglescratch,  {.ui = 2 } },
-	{ MODKEY|ShiftMask,             XK_m,      togglescratch,  {.ui = 3 } },
-	{ MODKEY|ShiftMask,             XK_w,      togglescratch,  {.ui = 4 } },
-	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.ui = 5 } },
-	{ MODKEY|ShiftMask,             XK_c,      togglescratch,  {.ui = 6 } },
-	{ MODKEY|ShiftMask,             XK_h,      togglescratch,  {.ui = 7 } },
-	{ MODKEY|ShiftMask,             XK_apostrophe,togglescratch,{.ui = 8} },
+	{ MODKEY|ControlMask|ShiftMask, XK_Return, togglescratch,  {.ui = 1 } },
+	{ MODKEY,                       XK_apostrophe,togglescratch,{.ui = 2} },
+	{ MODKEY|ShiftMask,             XK_l,      togglescratch,  {.ui = 3 } },
+	{ MODKEY|ShiftMask,             XK_m,      togglescratch,  {.ui = 4 } },
+	{ MODKEY|ShiftMask,             XK_w,      togglescratch,  {.ui = 5 } },
+	{ MODKEY|ShiftMask,             XK_a,      togglescratch,  {.ui = 6 } },
+	{ MODKEY|ShiftMask,             XK_c,      togglescratch,  {.ui = 7 } },
+	{ MODKEY|ShiftMask,             XK_h,      togglescratch,  {.ui = 8 } },
+	{ MODKEY|ShiftMask,             XK_apostrophe,togglescratch,{.ui = 9} },
+	{ MODKEY,                       XK_v,      togglescratch,  {.ui = 10} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -155,6 +163,7 @@ static Key keys[] = {
 	//{ 0,                            XF86XK_WakeUp,            spawn, SHCMD("scrot") },
 	{ 0,                            XF86XK_Display,           spawn, SHCMD("screen") },
 	{ 0,                            XF86XK_Favorites,         spawn, SHCMD("slock") },
+	{ MODKEY,                       XF86XK_Favorites,         spawn, SHCMD("panic") },
 };
 
 /* button definitions */

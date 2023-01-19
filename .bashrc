@@ -24,12 +24,14 @@ export ASAN_OPTIONS=verify_asan_link_order=0
 
 umask 027
 
+alias c='cd'
 alias ls='ls --color=auto'
+alias l='ls'
 alias vi='vim'
 alias v='vim'
 alias zat='setsid -f zathura'
 alias mtoot='madonctl -i chaos.social toot'
-alias toot='vipe | mtoot --stdin'
+alias toot='vipe | mtoot --stdin &>/dev/null || echo failure'
 alias npm="node --dns-result-order=ipv4first $(which npm)"
 
 alias gi='git init'
@@ -50,9 +52,6 @@ set -o noclobber # no > misuse; >| instead
 #set -o nounset
 set -o notify
 set -o vi
-
-stty susp undef
-bind -x '"\C-z":"fg"'
 
 f() {
 	RG_PREFIX="rga --files-with-matches"
@@ -82,3 +81,8 @@ e() {
 }
 
 . ~/.scripts/z.sh
+. /usr/share/fzf/key-bindings.bash
+. /usr/share/fzf/completion.bash
+
+stty susp undef
+bind -x '"\C-z":"fg"'

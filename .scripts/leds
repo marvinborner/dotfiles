@@ -1,4 +1,8 @@
 #!/bin/sh
 
-echo 0 | sudo tee -a /sys/devices/platform/thinkpad_acpi/leds/tpacpi\:\:power/brightness &>/dev/null
-echo 0 | sudo tee -a /sys/devices/platform/thinkpad_acpi/leds/tpacpi\:\:lid_logo_dot/brightness &>/dev/null
+#echo 0 | sudo tee -a /sys/class/leds/tpacpi\:\:power/brightness & >/dev/null
+
+echo 0 | sudo tee -a /sys/devices/platform/thinkpad_acpi/leds/tpacpi\:\:power/brightness &
+>/dev/null
+echo 0 | sudo tee -a /sys/devices/platform/thinkpad_acpi/leds/tpacpi\:\:lid_logo_dot/brightness &
+>/dev/null

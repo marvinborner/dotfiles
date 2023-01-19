@@ -31,3 +31,4 @@ xdotool search --onlyvisible --class Alacritty windowunmap %@
 
 #obsidian &
 dbus-run-session dwm
+#exec dbus-launch dwm
