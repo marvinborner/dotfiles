@@ -24,7 +24,7 @@ typedef struct {
 } Sp;
 const char *spcmd0[] = {"term", "-t", "spterm1", NULL };
 const char *spcmd1[] = {"term", "-t", "spterm2", NULL };
-const char *spcmd2[] = {"term", "-t", "spcalc", "-e", "python3", "-q", NULL };
+const char *spcmd2[] = {"term", "-t", "spcalc1", "-e", "python3", "-q", NULL };
 const char *spcmd3[] = {"keepassxc", NULL };
 const char *spcmd4[] = {"term", "-t", "mail", "-e", "neomutt", NULL };
 const char *spcmd5[] = {"weather", "show", NULL };
@@ -32,12 +32,13 @@ const char *spcmd6[] = {"term", "-t", "spalsa", "-e", "alsamixer", NULL };
 const char *spcmd7[] = {"term", "-t", "spcale", "-e", "calcurse", NULL };
 const char *spcmd8[] = {"term", "-t", "sptop", "-e", "htop", NULL };
 const char *spcmd9[] = {"term", "-t", "spnode", "-e", "node", NULL };
-const char *spcmd10[] = {"term", "-t", "vimterm", "-e", "vim", NULL };
+const char *spcmd10[] = {"term", "-t", "spvim", "-e", "vim", NULL };
+const char *spcmd11[] = {"term", "-t", "spcalc2", "-e", "octave-cli", "-q", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm1",     spcmd0},
 	{"spterm2",     spcmd1},
-	{"spcalc",      spcmd2},
+	{"spcalc1",     spcmd2},
 	{"keepassxc",   spcmd3},
 	{"mail",        spcmd4},
 	{"weather",     spcmd5},
@@ -45,7 +46,8 @@ static Sp scratchpads[] = {
 	{"spcale",      spcmd7},
 	{"sptop",       spcmd8},
 	{"spnode",      spcmd9},
-	{"vimterm",     spcmd10},
+	{"spvim",       spcmd10},
+	{"spcalc2",     spcmd11},
 };
 
 /* tagging */
@@ -58,7 +60,7 @@ static const Rule rules[] = {
 	/* class      instance    title       tags mask     isfloating   monitor */
 	{ NULL,       NULL,       "spterm1",  SPTAG(0),         1,         -1 },
 	{ NULL,       NULL,       "spterm2",  SPTAG(1),         1,         -1 },
-	{ NULL,       NULL,       "spcalc",   SPTAG(2),         1,         -1 },
+	{ NULL,       NULL,       "spcalc1",  SPTAG(2),         1,         -1 },
 	{ NULL,       "keepassxc",NULL,       SPTAG(3),         1,         -1 },
 	{ NULL,       NULL,       "mail",     SPTAG(4),         1,         -1 },
 	{ NULL,       NULL,       "weather",  SPTAG(5),         1,         -1 },
@@ -66,7 +68,8 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "spcale",   SPTAG(7),         1,         -1 },
 	{ NULL,       NULL,       "sptop",    SPTAG(8),         1,         -1 },
 	{ NULL,       NULL,       "spnode",   SPTAG(9),         1,         -1 },
-	{ NULL,       NULL,       "vimterm",  SPTAG(10),        1,         -1 },
+	{ NULL,       NULL,       "spvim",    SPTAG(10),        1,         -1 },
+	{ NULL,       NULL,       "spcalc2",  SPTAG(11),        1,         -1 },
 };
 
 /* layout(s) */
@@ -103,6 +106,7 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("scrot") },
+	{ MODKEY|ControlMask|ShiftMask, XK_p,      spawn,          SHCMD("tscrot") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
@@ -140,6 +144,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_h,      togglescratch,  {.ui = 8 } },
 	{ MODKEY|ShiftMask,             XK_apostrophe,togglescratch,{.ui = 9} },
 	{ MODKEY,                       XK_v,      togglescratch,  {.ui = 10} },
+	{ MODKEY,                       XK_o,      togglescratch,  {.ui = 11} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
