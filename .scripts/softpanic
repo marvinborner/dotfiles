@@ -1,0 +1,5 @@
+#!/bin/sh
+
+wifi off
+slock
+wifi on

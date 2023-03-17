@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# codes from there (first 6 letters, rest 0)
+# https://www.xrepository.de/api/xrepository/urn:de:bund:destatis:bevoelkerungsstatistik:schluessel:rs_2021-07-31/download/Regionalschl_ssel_2021-07-31.json
+
+code="084160000000"
+warnings="https://warnung.bund.de/api31/dashboard/$code.json"
+
+curl "$warnings" | jq

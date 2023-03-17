@@ -1,6 +1,10 @@
 #!/bin/env sh
 
-sudo systemctl start avahi-daemon
-sleep 1
+#sudo ufw disable
+sudo systemctl restart avahi-daemon
+echo "started avahi, waiting..."
+sleep 5
 uxplay -n melvin -nh -p
 sudo systemctl stop avahi-daemon
+#sudo ufw enable
+echo "stopped avahi"

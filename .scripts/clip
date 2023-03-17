@@ -1,3 +1,4 @@
 #!/bin/sh
 
-copyq copy $1 -
+# copyq copy $1 -
+xclip -in -selection primary -f | xclip -in -selection secondary -f | xclip -in -selection clipboard

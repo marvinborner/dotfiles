@@ -3,4 +3,4 @@
 lang=$(echo -e "eng\ndeu" | dmenu)
 
 killall -9 flameshot
-flameshot gui --raw | tesseract -l "$lang" stdin stdout | xclip -in -selection clipboard
+flameshot gui --raw | tesseract -l "$lang" stdin stdout | clip

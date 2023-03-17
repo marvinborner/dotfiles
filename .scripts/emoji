@@ -12,7 +12,7 @@ fi
 
 emoji=$(grep "^$(echo $@)|" ~/.config/emoji | cut -d '|' -f 2 | tr -s '\r')
 
-#echo "$emoji" | xclip -selection clipboard
+echo "$emoji" | clip
 xdotool type --window "$window" "$emoji"
 
 xdotool windowactivate "$window"

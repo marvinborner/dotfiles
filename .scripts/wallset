@@ -2,6 +2,6 @@
 
 xsetroot -solid black
 
-#random=$(find $HOME/.walls -maxdepth 1 -name "k*" -type f | shuf -n 1)
-#echo $random
-#hsetroot -cover "$random"
+# random=$(find $HOME/.walls -maxdepth 1 -name "l*" -type f | shuf -n 1)
+# echo $random
+# hsetroot -cover "$random"

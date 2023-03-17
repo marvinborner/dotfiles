@@ -1,0 +1,26 @@
+#!/bin/env sh
+
+islocked || exit 0 # already locked
+
+export XAUTHORITY=/home/melvin/.Xauthority
+export DISPLAY=:0
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+ishome && (
+	hasyubi || (
+		notify-send "intrusion detected" &
+		(
+			sleep 1
+			softpanic
+		)
+	)
+) || (
+	hasyubi || (
+		notify-send -u critical "connect key now or poweroff!" &
+		(
+			sleep 30
+			hasyubi || panic
+		)
+	)
+)
