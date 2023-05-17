@@ -1,22 +1,29 @@
 #!/bin/sh
 
-net="$(hasnet && echo up || echo down)"
-temp="$(awk '{print $2 "°C"}' /proc/acpi/ibm/thermal)"
-battery="$(cat /sys/class/power_supply/BAT0/capacity)%"
-charging="$(awk '{print $1*10^-6 "W"}' /sys/class/power_supply/BAT0/power_now)"
 time=$(date +'%d.%m | %H:%M')
-weather=$(weather text)
+what="$(whatamidoing)"
+timer=$(timer get)
+temp="$(awk '{print $2 "°C"}' /proc/acpi/ibm/thermal)"
 mem=$(free -m | awk '/^Mem:/{printf("%.1fGb\n",$3/1000)}')
 swap=$(free -m | awk '/^Swap:/{printf("%.1fGb\n",$3/1000)}')
-cpu=$(awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else printf "%.1f%", (($2+$4-u1) * 100 / (t-t1)); }' <(grep 'cpu ' /proc/stat) <(sleep .5; grep 'cpu ' /proc/stat))
+weather=$(weather text)
+charging="$(awk '{print $1*10^-6 "W"}' /sys/class/power_supply/BAT0/power_now)"
+net="$(hasnet && echo up || echo down)"
+battery="$(cat /sys/class/power_supply/BAT0/capacity)%"
 
+if [ "$1" = "quick" ]; then
+	echo "$battery ($charging) | $temp | $mem | $swap | $net | $weather | $timer | $what | $time"
+	exit 0
+fi
+
+cpu=$(awk '{u=$2+$4; t=$2+$4+$5; if (NR==1){u1=u; t1=t;} else printf "%.1f%", (($2+$4-u1) * 100 / (t-t1)); }' <(grep 'cpu ' /proc/stat) <(sleep .5; grep 'cpu ' /proc/stat))
 mouse=$(upower -d | grep -m 1 -A 10 mouse | awk '/percentage/{printf("| M%s ",$2)}')
 
 if bluetooth | grep -q on; then
-btdev=$(bluetoothctl info)
-btname=$(echo "$btdev" | awk '/Name/{$1=""; printf("|%s",$0)}')
-btbat=$(echo "$btdev" | awk '/Battery/{printf(" %s ",$4)}')
-bt="$btname$btbat"
+	btdev=$(bluetoothctl info)
+	btname=$(echo "$btdev" | awk '/Name/{$1=""; printf("|%s",$0)}')
+	btbat=$(echo "$btdev" | awk '/Battery/{printf(" %s ",$4)}')
+	bt="$btname$btbat"
 fi
 
-echo "$battery ($charging) $mouse$bt| $temp | $cpu | $mem | $swap | $net | $weather | $time"
+echo "$battery ($charging) $mouse$bt| $temp | $cpu | $mem | $swap | $net | $weather | $timer | $what | $time"

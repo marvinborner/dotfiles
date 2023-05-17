@@ -172,12 +172,19 @@ let g:ale_fixers.java = ['google_java_format']
 let g:ale_fixers.tex = ['latexindent']
 let g:ale_fixers.python = ['black']
 let g:ale_fixers.r = ['styler']
+let g:ale_fixers.rust = ['rustfmt']
 let g:ale_linters = {}
+let g:ale_linters.haskell = ['hlint']
 let g:ale_linters.sh = ['shellcheck']
 let g:ale_linters.javascript = ['xo']
 let g:ale_linters.r = ['lintr']
-let g:ale_linters.python = ['pycodestyle']
+let g:ale_linters.python = ['ruff']
 
+nmap <silent> <leader>j :ALENext<cr>
+nmap <silent> <leader>k :ALEPrevious<cr>
+nmap <silent> <leader>d :ALEDetail<cr>
+
+" let g:ale_markdown_pandoc_options = '-s -t gfm -'
 let g:ale_markdown_pandoc_options = '-s -f markdown+yaml_metadata_block -t markdown -'
 let g:ale_virtualtext_cursor = 'disabled'
 

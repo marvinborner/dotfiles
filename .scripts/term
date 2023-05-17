@@ -7,4 +7,5 @@ else
 	EXTRA="-tMelvins terminal"
 fi
 
-alacritty msg create-window "${EXTRA}" $@
+#alacritty msg create-window "${EXTRA}" $@
+alacritty msg create-window $@

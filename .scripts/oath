@@ -1,0 +1,6 @@
+#!/bin/env bash
+
+sel=$(ykman oath accounts list | dmenu)
+code=$(ykman oath accounts code "$sel" | awk '{print $NF}')
+printf "%s" "$code" | clip
+notify-send "$sel" "$code" &

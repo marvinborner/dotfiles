@@ -1,6 +1,55 @@
 #!/bin/sh
 
-time=$(printf "\\n" | dmenu -p "How many minutes?")
-echo "sleeping for ${time}min"
-sleep $((time * 60))
-notify-send "Timer" "${time}min are up!"
+TIMER_PATH="/home/melvin/.timer"
+
+if [ "$1" = "run" ]; then
+	# relax if zero at start
+	if [ "$(cat "$TIMER_PATH")" -le "0" ]; then
+		echo "$TIMER_PATH" | entr -npz true
+	fi
+
+	while true; do
+		curr=$(cat "$TIMER_PATH")
+		next=$((curr - 5))
+		echo $next | tee "$TIMER_PATH"
+
+		if [ "$next" -le "0" ]; then
+			notify-send "Timer ended"
+			echo 0 | tee "$TIMER_PATH"
+			echo "$TIMER_PATH" | entr -npz true
+		fi
+
+		sleep 5
+	done
+elif [ "$1" = "get" ]; then
+	curr=$(cat "$TIMER_PATH")
+	if [ "$curr" -gt "3600" ]; then
+		str="$((curr / 3600)):$(((curr % 3600) / 60))h"
+	elif [ "$curr" -gt "60" ]; then
+		str="$((curr / 60)):$((curr % 60))m"
+	else
+		str="${curr}s"
+	fi
+	echo "$str"
+elif [ "$1" = "set" ]; then
+	num=$(printf "%s" "$2" | head -c-1)
+	unit=$(printf "%s" "$2" | tail -c1)
+	if [ "$unit" = "h" ]; then
+		secs=$((num * 3600))
+	elif [ "$unit" = "m" ]; then
+		secs=$((num * 60))
+	else
+		secs=$num
+	fi
+	echo "$secs" | tee "$TIMER_PATH"
+elif [ "$1" = "inc" ]; then
+	curr=$(cat "$TIMER_PATH")
+	next=$((curr + 300))
+	echo $next | tee "$TIMER_PATH"
+	xsetroot -name "$(stats quick)"
+elif [ "$1" = "dec" ]; then
+	curr=$(cat "$TIMER_PATH")
+	next=$((curr - 300))
+	echo $next | tee "$TIMER_PATH"
+	xsetroot -name "$(stats quick)"
+fi

@@ -1,5 +1,8 @@
 #!/bin/sh
 
+killall keepassxc
+killall ssh
+
 wifi off
 slock
 wifi on

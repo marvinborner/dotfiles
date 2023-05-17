@@ -34,6 +34,7 @@ const char *spcmd8[] = {"term", "-t", "sptop", "-e", "htop", NULL };
 const char *spcmd9[] = {"term", "-t", "spnode", "-e", "node", NULL };
 const char *spcmd10[] = {"term", "-t", "spvim", "-e", "vim", NULL };
 const char *spcmd11[] = {"term", "-t", "spcalc2", "-e", "octave-cli", "-q", NULL };
+const char *spcmd12[] = {"alacritty", "-t", "spkill", "-e", "bash", "-c", "bash -l -c '. ~/.bashrc; k'", NULL };
 static Sp scratchpads[] = {
 	/* name          cmd  */
 	{"spterm1",     spcmd0},
@@ -48,6 +49,7 @@ static Sp scratchpads[] = {
 	{"spnode",      spcmd9},
 	{"spvim",       spcmd10},
 	{"spcalc2",     spcmd11},
+	{"spkill",      spcmd12},
 };
 
 /* tagging */
@@ -70,6 +72,7 @@ static const Rule rules[] = {
 	{ NULL,       NULL,       "spnode",   SPTAG(9),         1,         -1 },
 	{ NULL,       NULL,       "spvim",    SPTAG(10),        1,         -1 },
 	{ NULL,       NULL,       "spcalc2",  SPTAG(11),        1,         -1 },
+	{ NULL,       NULL,       "spkill",   SPTAG(12),        1,         -1 },
 };
 
 /* layout(s) */
@@ -145,6 +148,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_apostrophe,togglescratch,{.ui = 9} },
 	{ MODKEY,                       XK_v,      togglescratch,  {.ui = 10} },
 	{ MODKEY,                       XK_o,      togglescratch,  {.ui = 11} },
+	{ MODKEY|ShiftMask,             XK_k,      togglescratch,  {.ui = 12} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -167,7 +171,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_WLAN,              spawn, SHCMD("wifi off") },
 	//{ 0,                            XF86XK_WakeUp,            spawn, SHCMD("scrot") },
 	{ 0,                            XF86XK_Display,           spawn, SHCMD("screen") },
-	{ 0,                            XF86XK_Favorites,         spawn, SHCMD("slock") },
+	{ 0,                            XF86XK_Favorites,         spawn, SHCMD("softpanic") },
 	{ MODKEY,                       XF86XK_Favorites,         spawn, SHCMD("panic") },
 };
 
@@ -179,6 +183,8 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[1]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button4,        spawn,          SHCMD("timer inc") },
+	{ ClkStatusText,        0,              Button5,        spawn,          SHCMD("timer dec") },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },

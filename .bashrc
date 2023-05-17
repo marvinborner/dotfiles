@@ -6,7 +6,8 @@ export TERMINAL=$TERM
 export PAGER=less
 export BROWSER=firefox
 export SSH_ASKPASS=ssh-askpass
-export PS1='\[\e]0;\us terminal\a\][\W] '
+#export PS1='\[\e]0;\us terminal\a\][\W] '
+export PS1='$(alacritty msg config window.title="$PWD")[\W] '
 
 export LC_CTYPE="en_US.UTF-8"
 
@@ -20,7 +21,7 @@ export CLICOLOR=1
 
 export UNCRUSTIFY_CONFIG=$HOME/.uncrustify.cfg
 
-export ASAN_OPTIONS=verify_asan_link_order=0
+#export ASAN_OPTIONS=verify_asan_link_order=0
 
 umask 027
 
@@ -47,6 +48,8 @@ alias gch='git checkout'
 
 disasm() { objdump -drwC -Mintel "$1" | less; }
 disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
+
+vg() { valgrind --trace-children=yes --track-fds=yes --log-fd=2 --error-limit=no --leak-check=full --show-possibly-lost=yes --track-origins=yes --show-reachable=yes "$@"; }
 
 set -o noclobber # no > misuse; >| instead
 #set -o nounset
@@ -86,3 +89,9 @@ e() {
 
 stty susp undef
 bind -x '"\C-z":"fg"'
+
+[ -f "/home/melvin/.ghcup/env" ] && source "/home/melvin/.ghcup/env" # ghcup-env
+
+#[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+#eval "$(atuin init bash)"
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
