@@ -1,0 +1,7 @@
+#!/bin/sh
+
+set -e
+
+MAX="$(pdfinfo "$1" | awk '/^Pages:/ {print $2}')"
+PAGE="$(shuf -i 1-"$MAX" -n 1)"
+xdotool type "${PAGE}G"
