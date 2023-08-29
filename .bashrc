@@ -19,6 +19,8 @@ export HISTCONTROL=ignoredups:erasedups:ignorespace
 export LESS='-iMRS -x8'
 export CLICOLOR=1
 
+export GPG_TTY=$(tty)
+
 export UNCRUSTIFY_CONFIG=$HOME/.uncrustify.cfg
 
 #export ASAN_OPTIONS=verify_asan_link_order=0
@@ -39,6 +41,7 @@ alias gi='git init'
 alias gs='git status'
 alias gc='git commit'
 alias ga='git add'
+alias gb='git branch'
 alias gp='git push'
 alias gd='git diff'
 alias gr='git reset'
@@ -46,8 +49,8 @@ alias gl='git log'
 alias gm='git mv'
 alias gch='git checkout'
 
-disasm() { objdump -drwC -Mintel "$1" | less; }
-disasmc() { objdump -drwC -Mintel --visualize-jumps=color "$1" | less -r; }
+disasm() { objdump -sdrwC -Mintel "$1" | less; }
+disasmc() { objdump -sdrwC -Mintel --visualize-jumps=color "$1" | less -r; }
 
 vg() { valgrind --trace-children=yes --track-fds=yes --log-fd=2 --error-limit=no --leak-check=full --show-possibly-lost=yes --track-origins=yes --show-reachable=yes "$@"; }
 
@@ -80,7 +83,7 @@ k() {
 }
 
 e() {
-	$EDITOR $(rg --files | fzf)
+	$EDITOR "$(rg --files | fzf)"
 }
 
 . ~/.scripts/z.sh
@@ -94,4 +97,4 @@ bind -x '"\C-z":"fg"'
 
 #[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
 #eval "$(atuin init bash)"
-[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+#[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh

@@ -35,8 +35,10 @@ xdotool search --onlyvisible --class Alacritty windowunmap %@
 
 timer run &
 
+#nextcloud --background &
+
 #obsidian &
 
-setsid -f arbtt-capture
+#setsid -f arbtt-capture
 exec dbus-run-session dwm
 #exec dbus-launch dwm

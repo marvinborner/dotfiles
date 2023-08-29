@@ -1,0 +1,6 @@
+#!/bin/sh
+
+set -e
+
+gpg -u "Master" --decrypt --armor -o "$1.dec" "$1"
+mv "$1.dec" "$1"

@@ -3,7 +3,7 @@
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
-static const int showbar            = 1;        /* 0 means no bar */
+static const int showbar            = 0;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka Term:pixelsize=14:antialias=true:autohint=true" };
 static const char dmenufont[]       = "Iosevka Term:pixelsize=14:antialias=true:autohint=true";
@@ -161,6 +161,7 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
 
 	{ MODKEY,                       XK_e,      spawn,          SHCMD("emoji") },
+	{ MODKEY,                       XK_n,      spawn,          SHCMD("firefox") },
 
 	{ 0,                            XF86XK_AudioMute,         spawn, SHCMD("amixer set Master toggle") },
 	{ 0,                            XF86XK_AudioRaiseVolume,  spawn, SHCMD("amixer set Master 5%+") },
@@ -168,6 +169,7 @@ static Key keys[] = {
 	{ 0,                            XF86XK_AudioMicMute,      spawn, SHCMD("amixer set Capture toggle") },
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl s 20-") },
 	{ 0,                            XF86XK_MonBrightnessUp,   spawn, SHCMD("brightnessctl s 20+") },
+	{ 0,                            XK_Cancel,                spawn, SHCMD("dnd") },
 	{ 0,                            XF86XK_WLAN,              spawn, SHCMD("wifi off") },
 	//{ 0,                            XF86XK_WakeUp,            spawn, SHCMD("scrot") },
 	{ 0,                            XF86XK_Display,           spawn, SHCMD("screen") },

@@ -2,6 +2,8 @@
 
 # xdotool search "" windowkill %@
 
+(printf "yes" | dmenu -p "stop" && killall -9 panic) &
+
 for i in $(seq 5); do
 	printf "panic\npanic\npanic" | osd_cat -d 1 -A center -l 3 -p middle -c red -f '-*-*-*-*-*-*-*-240-*-*-*-*-*-*'
 	sleep 0.1

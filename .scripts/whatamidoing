@@ -1,8 +1,13 @@
 #!/bin/sh
 # arbtt files have limited read access (good!) ==> write current tag to file using cronjob
 
+if ! [ $(pgrep "arbtt-capture") ]; then
+	notify-send "arbtt" "arbtt-capture is not running!"
+fi
+
 if [ "$1" = "sync" ]; then
-	/home/melvin/.cabal/bin/arbtt-stats --logfile=/home/melvin/.arbtt/capture.log --categorizefile=/home/melvin/.arbtt/categorize.cfg -f '$sampleage < 0:01' | tail -n 1 | awk '{print $1}' >/home/melvin/.arbtt/current
+	/home/melvin/.cabal/bin/arbtt-stats --logfile=/home/melvin/.arbtt/capture.log --categorizefile=/home/melvin/.arbtt/categorize.cfg -f '$sampleage < 0:01' --also-inactive | tail -n 1 | awk '{print $1}' >/home/melvin/.arbtt/current.tmp
+	mv /home/melvin/.arbtt/current.tmp /home/melvin/.arbtt/current
 else
 	cat /home/melvin/.arbtt/current
 fi

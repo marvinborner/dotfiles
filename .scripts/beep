@@ -1,4 +1,9 @@
-#!/bin/sh
+#!/bin/bash
 
-(amixer get Speaker | grep "off" &>/dev/null) || exit 0 # only beep on headphones
-paplay $HOME/.scripts/beep.ogg &
+# only beep on headphones
+(amixer get Speaker | grep "off" &>/dev/null) && (paplay "$HOME/.scripts/beep.ogg" &)
+
+# (
+# 	sleep 0.5
+# 	dunstctl action
+# ) &

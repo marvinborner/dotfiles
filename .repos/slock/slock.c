@@ -17,6 +17,7 @@
 #include <sys/types.h>
 #include <X11/extensions/Xrandr.h>
 #include <X11/extensions/dpms.h>
+#include <X11/XF86keysym.h>
 #ifdef XINERAMA
 #include <X11/extensions/Xinerama.h>
 #endif
@@ -228,7 +229,8 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 			    IsPrivateKeypadKey(ksym))
 				continue;
 			switch (ksym) {
-			case XK_Return:
+			//case XK_Return:
+			case XF86XK_Favorites:
 				passwd[len] = '\0';
 				errno = 0;
 				retval = pam_start(pam_service, hash, &pamc, &pamh);
