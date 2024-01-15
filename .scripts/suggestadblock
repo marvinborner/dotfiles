@@ -1,0 +1,14 @@
+#!/bin/env bash
+
+export XAUTHORITY=/home/melvin/.Xauthority
+export DISPLAY=:0
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+LIM=30
+
+expiring="$(find $HOME/.cache/adblock_disabled -mmin +$LIM)"
+if [ "$expiring" ]; then
+	notify-send "Focus" "Adblock länger als $LIM Minuten deaktiviert"
+	exit 0
+fi

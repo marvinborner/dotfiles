@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# run as crontab job
+
+export XAUTHORITY=/home/melvin/.Xauthority
+export DISPLAY=:0
+export XDG_RUNTIME_DIR=/run/user/1000
+export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus
+
+url="..."
+
+wget -q "$url" -O /tmp/webchange_new
+
+touch /tmp/webchange_current
+
+if ! cmp -s /tmp/webchange_new /tmp/webchange_current >/dev/null; then
+	notify-send -t 0 -u critical "Website changed!" "$(date)"
+fi
+
+mv /tmp/webchange_new /tmp/webchange_current

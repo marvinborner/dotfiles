@@ -1,0 +1,11 @@
+#!/bin/sh
+
+if [ "$(dunstctl is-paused)" = "true" ]; then
+	killall -SIGUSR2 dunst
+	notify-send "disturb!"
+else
+	notify-send "do not disturb!"
+	sleep 3
+	dunstctl close-all
+	killall -SIGUSR1 dunst
+fi
